@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import logo from "../assets/img/Doggie Hommie.png";
 
 const Navbar = () => {
-  var logged_in = true;
+  var logged_in = false;
   return (
     <div className="navbar">
       <div id="logo">
@@ -15,14 +15,19 @@ const Navbar = () => {
         {/* <!-- <a href="index.php">Home</a>
         <a href="about.php">About</a>
         <a href="contact.php">Contact</a> --> */}
-        if (! logged_in) {
+        {
+          logged_in ? (
+            <>
+            </>
+              
+          ) : (
           <>
           <Link to="logIn">Log In</Link>
           // {/* <a href="login.php">Login</a> */}
           <Link to="signUp">Sign Up</Link>
           // {/* <a href="register.php">Register</a> */}
           </>
-        }
+          )}
 
       </div>
     </div>
