@@ -5,7 +5,7 @@ import Post from '../components/post';
 const Posts = ({posts}) => {
   return (
     <div className="container justify-content-center">
-        <div class="row justify-content-center">
+        <div className="row justify-content-center">
           {posts.length > 0 ? (
             posts.map((post) => (
               <Post
