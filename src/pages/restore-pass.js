@@ -1,7 +1,31 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import AppLogo from '../assets/img/4.png'
 
 const RestorePass = () => {
+  const redirect = () => {
+    window.location.href = '/login'
+  }
+  const handleSubmit = async (event) => {
+
+    event.preventDefault()
+    redirect();
+
+    // console.log('estado',state)
+    // await axios.post('http://localhost:8000/login', state, fetch)
+    // const data =  await axios.post('http://127.0.0.1:8000/login',state, {headers: {'Access-Control-Allow-Origin': 'POST'}})
+    // await axios.post('http://localhost:8000/login', state,
+    // {
+    //    headers: {
+    //       // authorization: ' xxxxxxxxxx' ,
+    //       'Content-Type': 'application/json'
+    //    } 
+    // }).then(function (response) {
+    //    console.log(response);
+    // });
+    // console.log('data',data)
+
+  }
   return (
     <div className="container-fluid overflow-auto" style={{ margin: '0px', padding: '0px' }}>
       <div className="container-fluid overflow-auto" style={{ height: '100vh', margin: '0', padding: '3%', background: '#dcdbdb', minHeight: '300px' }}>
@@ -11,19 +35,19 @@ const RestorePass = () => {
         >
           <div className="col-6 col-md-6 align-self-center" style={{ padding: '5%' }}>
             <p className="text-center fs-1 "> Olvide mi contraseña </p>
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="form-group text-start" >
                 <input
-                type="email"
-                className="form-control mt-2"
-                id="input_email"
-                placeholder="Correo electronico"
-                name="username"
+                  type="email"
+                  className="form-control mt-2"
+                  id="input_email"
+                  placeholder="Correo electronico"
+                  name="username"
                 />
                 <input
-                type="submit"
-                className="btn-primary bton"
-                value="Recuperar"
+                  type="submit"
+                  className="btn-primary bton"
+                  value="Recuperar"
                 />
               </div>
             </form>
