@@ -5,6 +5,7 @@ import Home from '../pages/home';
 import LogIn from '../pages/log-in';
 import Error from '../pages/404';
 import SignUp from '../pages/sign-up';
+import RestorePass from '../pages/restore-pass';
 
 
 // const PrivateRoutes = ({ component: Component, ...rest }) => (
@@ -21,6 +22,7 @@ const RoutesComponent = () => (
       <Routes>
         <Route exact path="/login" element={<LogIn />} />
         <Route exact path="/signup" element={<SignUp />} />
+        <Route exact path="/restorepass" element={<RestorePass />} />
         <Route exact path="/" element={<Home />} />
         <Route path="*" element={<Error/>} />
       </Routes>

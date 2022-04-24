@@ -82,7 +82,7 @@ const LogIn = () => {
             </form>
             <button type="button">Inicia con google</button>
             <div className="text-center" style={{ marginTop: "15px" }}>
-              <Link to='/home'>
+              <Link to='/restorepass'>
                 <p className="users-redirect-link">
                   ¿Olvidaste tu contraseña?
                 </p>
