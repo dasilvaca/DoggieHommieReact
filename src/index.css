@@ -1,62 +1,84 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
-:root{
+:root {
   --fondo: #e3e4ee;
   --fondo-navbar: #37384f;
   --fondo-menu: #43455a;
   --acentos-hover: #ca89a3;
   --blanco: #f3f3f5;
   --secundary-navbar-background: #4d4762;
-
 }
 
-*{
+* {
   padding: 0%;
   margin: 0%;
 }
-.navbar{
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.navbar {
   height: 55px;
   background-color: var(--fondo-navbar);
 }
 
-.navbar #logo img{
+.navbar #logo img {
   position: relative;
   left: 20px;
   height: 45px;
 }
 
-.navbar #nav-links{
+.navbar #nav-links {
   position: relative;
   right: 0;
 }
 
-.navbar #nav-links a{
+.navbar #nav-links a {
   color: var(--blanco);
   text-decoration: none;
-  font-family: 'Mukta', sans-serif;
+  font-family: "Mukta", sans-serif;
   font-weight: bold;
   font-size: 1.2em;
   padding: 0.5em;
   display: inline-block;
   transition: 0.3s;
-  
 }
 
-.navbar #nav-links :hover{
+.navbar #nav-links :hover {
   color: var(--acentos-hover);
   background-color: var(--secundary-navbar-background);
   border-bottom: 2px solid var(--acentos-hover);
-  
+}
+
+.fondo_mitad_derecho {
+  background: linear-gradient(180deg, #44cccc 0%, rgba(76, 44, 206, 0.93) 100%);
+  border-radius: 20px;
+}
+
+#form-content {
+  width: 75%;
+  position: absolute;
+  left: 10%;
+  top: 25vh;
+  text-align: left;
+  margin: 5px;
+}
+
+.bton {
+  background-color: #c6ab7c !important;
+  border: None;
+  border-radius: 8px;
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  font-size: large;
 }

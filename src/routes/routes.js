@@ -18,7 +18,7 @@ const RoutesComponent = () => (
     <LayOut>
       <Routes>
         <Route exact path="/login" element={<LogIn />} />
-        <Route exact path="/home" element={<Home />} />
+        <Route exact path="/" element={<Home />} />
         <Route path="*" element={<h1>Error</h1>} />
       </Routes>
     </LayOut>
