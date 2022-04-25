@@ -11,8 +11,8 @@ const LogIn = () => {
   const handleSubmit = async (event) => {
     event.preventDefault()
     // console.log('estado', state)
-    await axios.post('http://localhost:8000/login', state)//, fetch)
-    // console.log('data', data)
+    var x = await axios.post('http://localhost:8000/login', state)//, fetch)
+    console.log('data', x)
 
   }
   return (
