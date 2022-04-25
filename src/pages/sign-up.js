@@ -27,20 +27,16 @@ const SignUp = () => {
   const [state, setstate] = useState(() => (
     {
       user : {
-        first_name:"",
+        first_name:null,
         last_name:"",
-        username:"", //email
-        password:"",
-        password_confirmation:""
+        username:null, //email
+        password:null,
+        password_confirmation:null
       },
-      second_name: "Ja",
-      second_lastname : "Ja",
-      telefono: '',
-      tipo_documento: "CC",
-      numero_documento :"",
-      pais:"",
-      departamento :"Correto Señor Edwin",
-      ciudad:""
+      telefono:null,
+      numero_documento :null,
+      pais:null,
+      ciudad:null
   }
   
   )
