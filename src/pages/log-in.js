@@ -7,37 +7,12 @@ import cors from 'cors'
 const LogIn = () => {
   const [state, setstate] = useState(() => ({ username: '', password: '' }));
 
-  console.log('estado', state)
-
-//   const express = require("express");
-//   var cors = require('cors')
-//   const app = express();
-//   app.use(cors());
-//   const { createProxyMiddleware } = require('http-proxy-middleware');
-//   app.use('/login', createProxyMiddleware({ 
-//     target: 'http://localhost:8000/', //original url
-//     changeOrigin: true, 
-//     //secure: false,
-//     onProxyRes: function (proxyRes, req, res) {
-//        proxyRes.headers['Access-Control-Allow-Origin'] = '*';
-//     }
-// }));
-
+  // console.log('estado', state)
   const handleSubmit = async (event) => {
     event.preventDefault()
-    console.log('estado',state)
-    // await axios.post('http://localhost:8000/login', state, fetch)
-    // const data =  await axios.post('http://127.0.0.1:8000/login',state, {headers: {'Access-Control-Allow-Origin': 'POST'}})
-    // await axios.post('http://localhost:8000/login', state,
-    // {
-    //    headers: {
-    //       // authorization: ' xxxxxxxxxx' ,
-    //       'Content-Type': 'application/json'
-    //    } 
-    // }).then(function (response) {
-    //    console.log(response);
-    // });
-    console.log('data',data)
+    // console.log('estado', state)
+    await axios.post('http://localhost:8000/login', state)//, fetch)
+    // console.log('data', data)
 
   }
   return (
@@ -97,11 +72,13 @@ const LogIn = () => {
             <div
               className="row  justify-content-md-center"
               style={{ alignItems: 'center', height: '100%', textAlign: 'center' }}>
-              <img
-                alt="ProEs Logo"
-                src={AppLogo}
-                style={{ height: '40%', width: "auto" }}
-              />
+              <Link to="/">
+                <img
+                  alt="ProEs Logo"
+                  src={AppLogo}
+                  style={{ height: '40%', width: "auto" }}
+                />
+              </Link>
               {/* <p>{state.email}</p> */}
             </div>
           </div>

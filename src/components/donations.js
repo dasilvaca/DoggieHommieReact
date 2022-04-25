@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Post = ({photo,title,description}) => {
+const Donation = ({photo,title,description}) => {
   return (
     <div className="card mb-3" style={{maxWidth: "1000px"}}>
   <div className="row g-0">
@@ -18,4 +18,4 @@ const Post = ({photo,title,description}) => {
   )
 }
 
-export default Post
+export default Donation

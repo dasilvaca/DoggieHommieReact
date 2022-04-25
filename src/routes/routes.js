@@ -16,6 +16,7 @@ import RestorePass from '../pages/restore-pass';
 //     )} />
 // );
 
+
 const RoutesComponent = () => (
   <BrowserRouter>
     <LayOut>

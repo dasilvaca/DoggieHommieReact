@@ -11,19 +11,6 @@ const RestorePass = () => {
     event.preventDefault()
     redirect();
 
-    // console.log('estado',state)
-    // await axios.post('http://localhost:8000/login', state, fetch)
-    // const data =  await axios.post('http://127.0.0.1:8000/login',state, {headers: {'Access-Control-Allow-Origin': 'POST'}})
-    // await axios.post('http://localhost:8000/login', state,
-    // {
-    //    headers: {
-    //       // authorization: ' xxxxxxxxxx' ,
-    //       'Content-Type': 'application/json'
-    //    } 
-    // }).then(function (response) {
-    //    console.log(response);
-    // });
-    // console.log('data',data)
 
   }
   return (
