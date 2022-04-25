@@ -1,8 +1,52 @@
 import React , { useState } from 'react'
 import AppLogo from '../assets/img/4.png'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 const SignUp = () => {
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+
+    // var name = state.user.first_name.split(" ");
+    // state.user.first_name = name[0] // TODO Modify Djangho uset model to have only first name and last name or just name
+    // state.user.last_name = name[1]
+
+    if (state.user.password !== state.user.password_confirmation) {
+      alert("Las contraseñas no coinciden")
+      console.log('data', state)
+      return
+    }
+    else{
+      delete state.user.password_confirmation;
+      var x = await axios.post('http://localhost:8000/users', state);
+      console.log('data', x)
+      console.log('data', state)
+    }
+
+  }
+  const [state, setstate] = useState(() => (
+    {
+      user : {
+        first_name:"",
+        last_name:"",
+        username:"", //email
+        password:"",
+        password_confirmation:""
+      },
+      second_name: "Ja",
+      second_lastname : "Ja",
+      telefono: '',
+      tipo_documento: "CC",
+      numero_documento :"",
+      pais:"",
+      departamento :"Correto Señor Edwin",
+      ciudad:""
+  }
+  
+  )
+  
+  
+  );
   return (
     <div className="container-fluid overflow-auto" style={{ margin: '0px', padding: '0px' }}>
       <div className="container-fluid overflow-auto" style={{ height: '100vh', margin: '0', padding: '3%', background: '#dcdbdb', minHeight: '300px' }}>
@@ -12,7 +56,7 @@ const SignUp = () => {
         >
           <div className="col-6 col-md-6 align-self-center" style={{ padding: '5%' }}>
             <p className="text-center fs-1 "> Registrate </p>
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="form-group text-start" >
                   <div className='row row-cols-2'>
                       <div className='col'>
@@ -22,6 +66,7 @@ const SignUp = () => {
                         id="input_name"
                         placeholder="Nombre completo"
                         name="name"
+                        onChange={(e) => {setstate({ ...state, user: {...state.user, first_name: e.target.value} })}}
                       />
                       <input
                         type="email"
@@ -29,6 +74,7 @@ const SignUp = () => {
                         id="input_email"
                         placeholder="Correo electronico"
                         name="username"
+                        onChange={(e) => setstate({ ...state, user: {...state.user, username: e.target.value} })}
                         />
 
                        <input
@@ -37,6 +83,7 @@ const SignUp = () => {
                         id="input_password"
                         placeholder="Contraseña"
                         name="password"
+                        onChange={(e) => setstate({ ...state, user: {...state.user, password: e.target.value} })}
                         />
 
                         <input
@@ -45,6 +92,7 @@ const SignUp = () => {
                         id="input_passwordagain"
                         placeholder="Verifica tu contraseña"
                         name="password"
+                        onChange={(e) => setstate({ ...state, user: {...state.user, password_confirmation: e.target.value} })}
                         />
                       </div>
                       <div className='col'>
@@ -54,6 +102,7 @@ const SignUp = () => {
                         id="input_dni"
                         placeholder="DNI"
                         name="dni"
+                        onChange={(e) => setstate({ ...state, numero_documento: e.target.value})}
                         />
                         <input
                         type="text"
@@ -61,6 +110,7 @@ const SignUp = () => {
                         id="input_country"
                         placeholder="Pais"
                         name="country"
+                        onChange={(e) => setstate({ ...state, pais: e.target.value})}
                         />
                         <input
                         type="text"
@@ -68,13 +118,15 @@ const SignUp = () => {
                         id="input_city"
                         placeholder="Ciudad"
                         name="city"
+                        onChange={(e) => setstate({ ...state, ciudad: e.target.value})}
                         />
                         <input
-                        type="password"
+                        type="phone"
                         className="form-control mt-2"
                         id="input_phone"
                         placeholder="Telefono"
                         name="phone"
+                        onChange={(e) => setstate({ ...state, telefono: e.target.value})}
                         />
                       </div>
                   </div>
