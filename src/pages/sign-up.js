@@ -27,20 +27,16 @@ const SignUp = () => {
   const [state, setstate] = useState(() => (
     {
       user : {
-        first_name:"",
+        first_name:null,
         last_name:"",
-        username:"", //email
-        password:"",
-        password_confirmation:""
+        username:null, //email
+        password:null,
+        password_confirmation:null
       },
-      second_name: "Ja",
-      second_lastname : "Ja",
-      telefono: '',
-      tipo_documento: "CC",
-      numero_documento :"",
-      pais:"",
-      departamento :"Correto Señor Edwin",
-      ciudad:""
+      telefono:null,
+      numero_documento :null,
+      pais:null,
+      ciudad:null
   }
   
   )
@@ -145,11 +141,13 @@ const SignUp = () => {
             <div
               className="row  justify-content-md-center"
               style={{ alignItems: 'center', height: '100%', textAlign: 'center' }}>
-              <img
-                alt="DH Logo"
-                src={AppLogo}
-                style={{ height: '40%', width: "auto" }}
-              />
+                <Link to="/">
+                  <img
+                  alt="DH logo"
+                  src={AppLogo}
+                  style={{ height: '40%', width: "auto" }}
+                  />
+                </Link>
             </div>
           </div>
         </div>

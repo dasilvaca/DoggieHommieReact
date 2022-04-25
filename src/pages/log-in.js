@@ -26,9 +26,9 @@ const LogIn = () => {
             <p className="text-center fs-1 "> Inicia Sesión </p>
             <form onSubmit={handleSubmit}>
               <div className="form-group text-start" >
-                <p className="alert alert-danger">
+                {/* <p className="alert alert-danger">
                   Your username and password didn't match. Please try again.
-                </p>
+                </p> */}
                 <input
                   type="email"
                   className="form-control"
@@ -55,7 +55,6 @@ const LogIn = () => {
                 />
               </div>
             </form>
-            <button type="button" >Inicia con google</button>
             <div className="text-center" style={{ marginTop: "15px" }}>
               <Link to='/restorepass'>
                 <p className="users-redirect-link">
@@ -79,7 +78,6 @@ const LogIn = () => {
                   style={{ height: '40%', width: "auto" }}
                 />
               </Link>
-              {/* <p>{state.email}</p> */}
             </div>
           </div>
         </div>
