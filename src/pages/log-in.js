@@ -80,7 +80,7 @@ const LogIn = () => {
                 />
               </div>
             </form>
-            <button type="button">Inicia con google</button>
+            <button type="button" >Inicia con google</button>
             <div className="text-center" style={{ marginTop: "15px" }}>
               <Link to='/restorepass'>
                 <p className="users-redirect-link">
