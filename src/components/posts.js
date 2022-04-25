@@ -10,6 +10,7 @@ const Posts = ({posts}) => {
             posts.map((post) => (
               <Post
                 photo={post.image}
+                description={post.episode}
                 title={post.name}
               />
             ))
