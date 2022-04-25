@@ -146,7 +146,7 @@ const SignUp = () => {
               className="row  justify-content-md-center"
               style={{ alignItems: 'center', height: '100%', textAlign: 'center' }}>
               <img
-                alt="ProEs Logo"
+                alt="DH Logo"
                 src={AppLogo}
                 style={{ height: '40%', width: "auto" }}
               />

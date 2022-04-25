@@ -74,7 +74,7 @@ const LogIn = () => {
               style={{ alignItems: 'center', height: '100%', textAlign: 'center' }}>
               <Link to="/">
                 <img
-                  alt="ProEs Logo"
+                  alt="DH Logo"
                   src={AppLogo}
                   style={{ height: '40%', width: "auto" }}
                 />
