@@ -20,7 +20,9 @@ const Home = () => {
 
   return (
     <>
+    <div style={{  background: "linear-gradient(180deg, #44CCCC 0%, rgba(76, 44, 206, 0.93) 100%)",  border: "1px solid #222",}}>
       <Posts posts={characters}/>
+    </div>
     </>
   );
 };
