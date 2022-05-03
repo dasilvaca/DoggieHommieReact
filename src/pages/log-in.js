@@ -32,17 +32,17 @@ const LogIn = () => {
                 <input
                   type="email"
                   className="form-control"
-                  id="input_dni"
+                  id="email_login"
                   aria-describedby="dni_help"
                   placeholder="Correo electronico"
-                  name="username"
+                  name="user-email"
                   onChange={(e) => setstate({ ...state, username: e.target.value })}
                 />
 
                 <input
                   type="password"
                   className="form-control mt-2"
-                  id="teacher_password"
+                  id="user_password"
                   aria-describedby="dni_help"
                   placeholder="Contraseña"
                   name="password"
