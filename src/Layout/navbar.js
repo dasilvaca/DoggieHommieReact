@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/img/Doggie Hommie.png";
 
+
 const Navbar = () => {
   var logged_in = false;
   return (
@@ -16,7 +17,7 @@ const Navbar = () => {
         <a href="about.php">About</a>
         <a href="contact.php">Contact</a> --> */}
         {
-          logged_in ? (
+          logged_in? (
             <>
             </>
               
@@ -35,3 +36,5 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+

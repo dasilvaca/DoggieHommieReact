@@ -17,10 +17,15 @@ const SignUp = () => {
       return
     }
     else{
-      delete state.user.password_confirmation;
+      // delete state.user.password_confirmation;
       var x = await axios.post('http://localhost:8000/users', state);
       console.log('data', x)
       console.log('data', state)
+      if (x.status === 200) {
+        localStorage.setItem('token', x.data.token)
+        localStorage.setItem('user', JSON.stringify(x.data.user))
+        window.location.href = '/login'
+      }
     }
 
   }
@@ -145,7 +150,8 @@ const SignUp = () => {
                   <img
                   alt="DH logo"
                   src={AppLogo}
-                  style={{ height: '40%', width: "auto" }}
+                  style={{ height: '40%', width: "auto"/*, maxWidth: "300px"*/ }}
+                  className="img-fluid"
                   />
                 </Link>
             </div>

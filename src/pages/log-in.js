@@ -3,6 +3,7 @@ import AppLogo from '../assets/img/4.png'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import cors from 'cors'
+import Navbar from '../Layout/navbar'
 
 const LogIn = () => {
   const [state, setstate] = useState(() => ({ username: '', password: '' }));
@@ -13,6 +14,17 @@ const LogIn = () => {
     // console.log('estado', state)
     var x = await axios.post('http://localhost:8000/login', state)//, fetch)
     console.log('data', x)
+
+    if (x.status === 200) {
+      localStorage.setItem('token', x.data.token)
+      localStorage.setItem('user', JSON.stringify(x.data.user))
+      Navbar.logged_in = true
+      window.location.href = '/'
+      
+    }
+    else {
+      alert('Usuario o contraseña incorrectos')
+    }
 
   }
   return (
@@ -75,7 +87,8 @@ const LogIn = () => {
                 <img
                   alt="DH Logo"
                   src={AppLogo}
-                  style={{ height: '40%', width: "auto" }}
+                  style={{ height: '40%', width: "auto"/*, maxWidth: "300px"*/ }}
+                  className="img-fluid"
                 />
               </Link>
             </div>
