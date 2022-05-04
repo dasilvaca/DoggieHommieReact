@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PrivateLayouts = ({ children }) => {
+const PrivateLayOuts = ({ children }) => {
   return (
     <>
       {children}
@@ -8,4 +8,4 @@ const PrivateLayouts = ({ children }) => {
   );
 };
 
-export default PrivateLayouts;
+export default PrivateLayOuts;
