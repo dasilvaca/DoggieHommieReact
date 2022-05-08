@@ -47,11 +47,11 @@ const RestorePass = () => {
               className="row  justify-content-md-center"
               style={{ alignItems: 'center', height: '100%', textAlign: 'center' }}>
               <Link to="/">
-                  <img
+                <img
                   alt="DH logo"
                   src={AppLogo}
                   style={{ height: '40%', width: "auto" }}
-                  />
+                />
               </Link>
             </div>
           </div>

@@ -37,8 +37,7 @@
   }
 }
 
-
-.createPostProfilePic{
+.createPostProfilePic {
   border: 1px solid var(--newRedditTheme-line);
   -ms-flex-preferred-size: 38px;
   flex-basis: 38px;

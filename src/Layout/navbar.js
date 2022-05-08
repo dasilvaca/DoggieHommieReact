@@ -5,7 +5,7 @@ import Avatar from "../assets/img/Avatar.jpg";
 
 const Navbar = () => {
   var logged_in = true;
-  return(
+  return (
     <div className="navbar">
       <div id="logo">
         <Link to="/">
@@ -16,21 +16,21 @@ const Navbar = () => {
         {
           logged_in ? (
             <>
-            <Link to="logIn">
-              <img src={Avatar} style={{height: "2rem", borderRadius: "30px", alt: "Avatar" }} />
-            </Link>
-            {/* <a href="login.php">Login</a> */}
-            <Link to="/">Sign Out</Link>
-            {/* <a href="register.php">Register</a> */}
+              <Link to="logIn">
+                <img src={Avatar} style={{ height: "2rem", borderRadius: "30px", alt: "Avatar" }} />
+              </Link>
+              {/* <a href="login.php">Login</a> */}
+              <Link to="/">Sign Out</Link>
+              {/* <a href="register.php">Register</a> */}
             </>
-              
+
           ) : (
-          <>
-          <Link to="logIn">Log In</Link>
-          {/* <a href="login.php">Login</a> */}
-          <Link to="signUp">Sign Out</Link>
-          {/* <a href="register.php">Register</a> */}
-          </>
+            <>
+              <Link to="logIn">Log In</Link>
+              {/* <a href="login.php">Login</a> */}
+              <Link to="signUp">Sign Out</Link>
+              {/* <a href="register.php">Register</a> */}
+            </>
           )}
 
       </div>

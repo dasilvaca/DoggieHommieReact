@@ -8,7 +8,7 @@ const CreatePost = () => {
         <>
             <div className="container justify-content-center">
                 <div className="row justify-content-center">
-                    <div className="card mb-3 mt-2" style={{ width: "674px", height: "max-content" }}>
+                    <div className="card mb-3 mt-2" style={{ width: "674px", height: "max-content", paddingBottom: "8px" }}>
                         <div className="row g-0" style={{ marginTop: "10px" }}>
                             <div className="col-1">
                                 <img src={ProfilePic} className="createPostProfilePic" />
@@ -19,7 +19,7 @@ const CreatePost = () => {
                                 </Link>
                             </div>
                         </div>
-                        <div className="row g-0" /*style={{ marginTop: "10px" }}*/>
+                        <div className="row g-0">
                         </div>
                     </div>
                 </div>
