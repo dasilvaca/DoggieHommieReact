@@ -4,6 +4,7 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 import cors from 'cors'
 import LayOut from '../Layout/LayOut'
+import AddBankAccounts from '../components/AddBankAccounts'
 
 const NewPost = () => {
 
@@ -61,7 +62,18 @@ const NewPost = () => {
                         name="post-foto"
                         // onChange={(e) => setstate({ ...state, username: e.target.value })}
                         />
-                        <label for="añadir'cuenta" class=" form-check-label mb-1">Desea recibir donaciones </label>
+                        <div className="form-check">
+                            <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
+                            <AddBankAccounts></AddBankAccounts>
+                            <label className="form-check-label" for="flexCheckDefault">
+                                Desea recibir donaciones
+                            </label>
+                        </div>
+                        <input
+                            type="submit"
+                            className="btn-primary bton"
+                            value="Publicar"
+                        />
                     </form>
                 </div>
             </div>
