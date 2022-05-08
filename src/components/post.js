@@ -19,9 +19,9 @@ const Post = ({ photo, title, description }) => {
               }} />
           </div>
           <div className='row row-cols-3'>
-            <div className='col'> <FaArrowAltCircleUp /> </div>
+            {/* <div className='col'> <FaArrowAltCircleUp /> </div>
             <div className='col'> <AiOutlineDollar /> </div>
-            <div className='col'> <FaRegShareSquare /> </div>
+            <div className='col'> <FaRegShareSquare /> </div> */}
           </div>
         </div>
         <div className="col-md-8">
