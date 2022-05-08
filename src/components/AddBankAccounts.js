@@ -57,13 +57,29 @@ export const AddBankAccounts = () => {
                 <input
                     type="text"
                     className="form-control mb-3"
-                    id="post-foto"
-                    value=""
+                    id="bank"
+                    placeholder="Banco"
                     style={{width:"60%"}}
                 />
             </div>
-            <div className='row'></div>
-            <div className='row'></div>
+            <div className='row'>
+            <input
+                    type="text"
+                    className="form-control mb-3"
+                    id="account-type"
+                    placeholder="Tipo de cuenta"
+                    style={{width:"60%"}}
+                />
+            </div>
+            <div className='row'>
+            <input
+                    type="text"
+                    className="form-control mb-3"
+                    id="account-number"
+                    placeholder="Numero de cuenta"
+                    style={{width:"60%"}}
+                />
+            </div>
             <div className='row'>
                 <input
                     type="submit"
