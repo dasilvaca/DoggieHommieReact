@@ -61,6 +61,7 @@ const NewPost = () => {
                         name="post-foto"
                         // onChange={(e) => setstate({ ...state, username: e.target.value })}
                         />
+                        <label for="añadir'cuenta" class=" form-check-label mb-1">Desea recibir donaciones </label>
                     </form>
                 </div>
             </div>
