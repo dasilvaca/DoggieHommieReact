@@ -4,7 +4,7 @@ import logo from "../assets/img/Doggie Hommie.png";
 import Avatar from "../assets/img/Avatar.jpg";
 
 const Navbar = () => {
-  var logged_in = true;
+  var logged_in = false;
   return (
     <div className="navbar">
       <div id="logo">

@@ -17,6 +17,7 @@ const NewPost = () => {
         console.log('data', x)
     }
 
+
   return (
     <>
         <LayOut>
@@ -64,11 +65,13 @@ const NewPost = () => {
                         />
                         <div className="form-check">
                             <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
-                            <AddBankAccounts></AddBankAccounts>
+                            
+                                
                             <label className="form-check-label" for="flexCheckDefault">
                                 Desea recibir donaciones
                             </label>
                         </div>
+                        <AddBankAccounts></AddBankAccounts>
                         <input
                             type="submit"
                             className="btn-primary bton"

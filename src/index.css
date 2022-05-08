@@ -175,3 +175,44 @@ svg {
     text-align: center;
   }
 }
+
+
+
+#boton{
+
+	padding: 10px;
+
+	background: orange;
+
+	width: max-content;
+
+	cursor: pointer;
+
+	margin-top: 10px;
+
+	margin-bottom: 10px;
+
+	box-shadow: 0px 0px 1px #000;
+
+	display: inline-block;
+
+}
+
+
+
+
+#caja{
+
+	width: 100%;
+
+	margin: auto;
+
+	height: 0px;
+
+	background: #000;
+
+	box-shadow: 10px 10px 3px #D8D8D8;
+
+	transition: height .4s;
+
+}
