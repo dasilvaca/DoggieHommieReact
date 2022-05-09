@@ -31,7 +31,7 @@ const NewPost = () => {
                         Publica Algo
                     </p>
                     <form onSubmit={handleSubmit} encType="multipart/form-data">
-                        <label for="titulo" class="form-label mb-1">Titulo</label>
+                        <div style={{padding:"1%"}}><label for="titulo" class="form-label mb-1">Titulo</label>
                         <input
                         type="text"
                         className="form-control mb-3"
@@ -70,12 +70,13 @@ const NewPost = () => {
                             <label className="form-check-label" for="flexCheckDefault">
                                 Desea recibir donaciones
                             </label>
-                        </div>
-                        <AddBankAccounts></AddBankAccounts>
+                        </div></div>
+                        <div style={{padding : "2%"}}><AddBankAccounts></AddBankAccounts></div>
                         <input
                             type="submit"
                             className="btn-primary bton"
                             value="Publicar"
+                            style={{marginBottom : "1%"}}
                         />
                     </form>
                 </div>
