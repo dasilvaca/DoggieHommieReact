@@ -76,7 +76,7 @@ const Post = ({ photo, title, description }) => {
             <p className="card-text">{description}</p>
           </div>
         </div>
-        <img src={"http://cdn.onlinewebfonts.com/svg/img_193335.png"} className="img-fluid" alt="report icon" style={{width : "2rem", height:"2rem", marginLeft:"20px"}} />
+        <img src={"http://cdn.onlinewebfonts.com/svg/img_193335.png"} className="img-fluid" alt="report icon" style={{width : "2rem", height:"2rem", marginLeft:"30px", marginTop:"20px"}} />
       </div>
     </div>
   )
