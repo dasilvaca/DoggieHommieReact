@@ -78,6 +78,11 @@ code {
   margin: 5px;
 }
 
+.my_card{
+  width: 674px !important;
+  height: max-content;
+}
+
 .bton {
   background-color: #c6ab7c !important;
   border: None;
