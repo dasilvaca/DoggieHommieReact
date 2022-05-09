@@ -7,6 +7,8 @@ import Error from '../pages/404';
 import SignUp from '../pages/sign-up';
 import RestorePass from '../pages/restore-pass';
 import NewPost from '../pages/new-post';
+import UpdateUser,{Foo} from '../pages/update-user';
+
 
 
 // const PrivateRoutes = ({ component: Component, ...rest }) => (
@@ -26,6 +28,9 @@ const RoutesComponent = () => (
         <Route exact path="/restorepass" element={<RestorePass />} />
         <Route exact path="/new-post" element={<NewPost />} />
         <Route exact path="/" element={<Home />} />
+        <Route exact path="/updateUser" element={<UpdateUser/>} />
+
+
         <Route path="*" element={<Error/>} />
       </Routes>
   </BrowserRouter>
