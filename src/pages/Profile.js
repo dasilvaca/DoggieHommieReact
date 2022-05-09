@@ -1,5 +1,6 @@
 import React from 'react'
 import LayOut from '../Layout/LayOut'
+import ProfilePic from '../assets/img/4.png'
 
 export const Profile = () => {
   return (
@@ -10,7 +11,14 @@ export const Profile = () => {
         className="shadow-lg row d-block"
         style={{ height: 'auto', minHeight: '100%', borderRadius: '20px', backgroundColor: 'white' }}
         >
-
+            <div className='col col-rows-2'>
+                <div className='row row-cols-2'>
+                    <div className='col'>
+                        <img src={ProfilePic} className="ProfilePic" style={{size:"50%"}}/>
+                    </div>
+                </div>
+                <div className='row'></div>
+            </div>
         </div>
     </div>
     </div>

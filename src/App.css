@@ -46,5 +46,17 @@
   width: 48px;
   height: 48px;
   background-color: #8a95aa;
+
+
+}
+
+.ProfilePic {
+  border: 1px solid var(--newRedditTheme-line);
+  flex-basis: 38px;
+  margin: 5%;
+  border-radius: 50%;
+  width: 20%;
+
+  background-color: #37384F;
 }
 
