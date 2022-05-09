@@ -55,6 +55,7 @@ const Post = ({ photo, title, description }) => {
                 height: "100px",
                 margin: "10px"
               }} />
+              <p> Nombre de Usuario </p>
           </div>
           <div className='row row-cols-3'>
             <div className='col'>
@@ -68,12 +69,14 @@ const Post = ({ photo, title, description }) => {
             </div>
           </div>
         </div>
+        
         <div className="col-md-8">
           <div className="card-body">
             <h5 className="card-title" >{title}</h5>
             <p className="card-text">{description}</p>
           </div>
         </div>
+        <img src={"http://cdn.onlinewebfonts.com/svg/img_193335.png"} className="img-fluid" alt="report icon" style={{width : "2rem", height:"2rem", marginLeft:"20px"}} />
       </div>
     </div>
   )
