@@ -16,21 +16,11 @@ const SignUp = () => {
       console.log('data', state)
       return
     }
-<<<<<<< HEAD
-    else{
-      // delete state.user.password_confirmation;
-=======
     else {
       delete state.user.password_confirmation;
->>>>>>> 78a466d8e82ecdcb32893b6b11d2f13e9d652238
       var x = await axios.post('http://localhost:8000/users', state);
       console.log('data', x)
       console.log('data', state)
-      if (x.status === 200) {
-        localStorage.setItem('token', x.data.token)
-        localStorage.setItem('user', JSON.stringify(x.data.user))
-        window.location.href = '/login'
-      }
     }
 
   }
@@ -155,16 +145,9 @@ const SignUp = () => {
                 <img
                   alt="DH logo"
                   src={AppLogo}
-<<<<<<< HEAD
-                  style={{ height: '40%', width: "auto"/*, maxWidth: "300px"*/ }}
-                  className="img-fluid"
-                  />
-                </Link>
-=======
                   style={{ height: '40%', width: "auto" }}
                 />
               </Link>
->>>>>>> 78a466d8e82ecdcb32893b6b11d2f13e9d652238
             </div>
           </div>
         </div>
