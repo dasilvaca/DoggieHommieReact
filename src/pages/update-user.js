@@ -78,7 +78,7 @@ function UpdateUser() {
 
           <form onSubmit={handleSubmit}>
             <div className="row pb-5">
-              <div className="col-6 ">
+              <div className="col-4 ">
                 <input
                   className="my-3"
                   placeholder="Nombre"
@@ -116,7 +116,7 @@ function UpdateUser() {
                 ></input>
               </div>
 
-              <div className="col-6">
+              <div className="col-4">
                 <input
                   type="phone"
                   className="my-3"
@@ -164,6 +164,29 @@ function UpdateUser() {
               </input>
 
                 
+              </div>
+
+              <div className="col-4">
+              <input
+                  type="email"
+                  className="my-3"
+                  placeholder="Email"
+                  onChange={(e) =>
+                    setstate({ ...state, telefono: e.target.value })
+                  }
+                  style={{
+                    borderRadius: "6px",
+                    borderWidth: "1",
+                    backgroundColor: "rgb(235, 235, 235)",
+                    focusColor: "rgb(0, 153, 255)",
+                    lineHeight: "1.4",
+                    padding: "10px",
+                    caretColor: "rgb(51, 51, 51)",
+                    fontFamily: "DM Sans, sans-serif",
+                    textColor: "rgb(51, 51, 51)",
+                  }}
+                ></input>
+
               </div>
             </div>
           </form>
