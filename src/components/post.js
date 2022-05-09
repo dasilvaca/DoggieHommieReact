@@ -6,43 +6,6 @@ import { ArrowRight } from 'react-bootstrap-icons';
 
 const Post = ({ photo, title, description }) => {
   return (
-    // <div className="card mb-3 mt-2 my_card">
-    //   <div className='row'>
-    //     <div className='col-2'>
-    //     <img src={photo} className="img-fluid" alt="ProfilePhoto"
-    //            style={{
-    //              backgroundRepeat: "no-repeat", backgroundPosition: "50%",
-    //              borderRadius: "50%",
-    //              backgroundSize: "100% auto",
-    //              height: "100px",
-    //              margin: "10px"
-    //            }} />
-    //     </div>
-    //     <div className='col-10'>
-    //       <div className='row'>  
-    //         <div className='col-10'>
-    //           {title}
-    //         </div>
-    //         <div className='col-2'>
-    //         <img src={"https://www.iconpacks.net/icons/2/free-arrow-up-icon-2826-thumb.png"} className="img-fluid" alt="..." />
-    //         </div>
-    //       </div>
-    //     </div>
-    //   </div>
-    //   <div className='row'>
-    //     <div className='col-2'></div>
-    //     <div className='col-10'>
-    //       {description}
-    //     </div>
-    //   </div>
-    // </div>
-
-
-
-
-
-
-
     <div className="card mb-3 mt-2" style={{ width: "674px", height: "max-content" }}>
       <div className="row g-0">
         <div className="col-md-2 col-rows-2" >
