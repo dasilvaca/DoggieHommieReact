@@ -20,14 +20,14 @@ import NewPost from '../pages/new-post';
 
 const RoutesComponent = () => (
   <BrowserRouter>
-      <Routes>
-        <Route exact path="/login" element={<LogIn />} />
-        <Route exact path="/signup" element={<SignUp />} />
-        <Route exact path="/restorepass" element={<RestorePass />} />
-        <Route exact path="/new-post" element={<NewPost />} />
-        <Route exact path="/" element={<Home />} />
-        <Route path="*" element={<Error/>} />
-      </Routes>
+    <Routes>
+      <Route exact path="/login" element={<LogIn />} />
+      <Route exact path="/signup" element={<SignUp />} />
+      <Route exact path="/restorepass" element={<RestorePass />} />
+      <Route exact path="/new-post" element={<NewPost />} />
+      <Route exact path="/" element={<Home />} />
+      <Route path="*" element={<Error />} />
+    </Routes>
   </BrowserRouter>
 );
 

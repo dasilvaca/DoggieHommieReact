@@ -5,14 +5,14 @@ import LogIn from '../pages/log-in';
 import SignUp from '../pages/sign-up';
 
 const LayOut = ({ children }) => {
-  
-    return (
-      <>
-        <Navbar />
-        {children}
-        <Footer />
-      </>
-    );
+
+  return (
+    <>
+      <Navbar />
+      {children}
+      <Footer />
+    </>
+  );
 };
 
 export default LayOut;
