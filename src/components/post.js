@@ -1,9 +1,9 @@
 import React from 'react'
-import { FaArrowAltCircleUp, FaRegShareSquare } from "react-icons/fa";
+/* import { FaArrowAltCircleUp, FaRegShareSquare } from "react-icons/fa";
 import { AiOutlineDollar } from "react-icons/ai";
 import { ArrowRight } from 'react-bootstrap-icons';
 
-
+ */
 const Post = ({ photo, title, description }) => {
   return (
     <div className="card mb-3 mt-2" style={{ width: "674px", height: "max-content" }}>
