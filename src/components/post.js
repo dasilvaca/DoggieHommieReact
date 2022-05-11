@@ -1,5 +1,6 @@
 import { textAlign } from '@mui/system'
-import React from 'react'
+import React from 'react';
+import axios from 'axios';
 /* import { FaArrowAltCircleUp, FaRegShareSquare } from "react-icons/fa";
 import { AiOutlineDollar } from "react-icons/ai";
 import { ArrowRight } from 'react-bootstrap-icons';
@@ -9,10 +10,15 @@ import { ArrowRight } from 'react-bootstrap-icons';
 
 
 const Post = ({ photo, title, description, username_str, post_report_id}) => {
-  const report = () => {
+  const report = async () => {
     console.log(post_report_id)
-    alert("Report has been sent")
-    axios.patch("http://127.0.0.1:8000/post/RUD/" + String(post_report_id))
+    var x = await axios.patch("http://127.0.0.1:8000/post/RUD/" + String(post_report_id))
+    console.log(x.status)
+    if (x.status === 200) {
+      window.alert("El post ha sido reportado")
+    }else{
+      window.alert("Error. Verifica los datos")
+    }
     
   }
   return (

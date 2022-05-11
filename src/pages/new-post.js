@@ -38,8 +38,15 @@ const NewPost = () => {
         event.preventDefault()
         // console.log('estado', state)
         var x = await axios.post('http://localhost:8000/post/', post_req)//, fetch)
+
+    
+        if (x.status === 200) {
+            window.alert("Post creado exitosamente")
+            window.location.href = '/'
+          }else{
+            window.alert("Error. Verifica los datos")
+          }
         console.log('data', x)
-        window.location.href("/")
     }
 
     const [receiveDonations, toggleDonations] = useState(() => (false))
