@@ -7,8 +7,35 @@ import LayOut from '../Layout/LayOut'
 import AddBankAccounts from '../components/AddBankAccounts'
 
 const NewPost = () => {
+    class bankAccountClass{
+        
+        constructor(id, bank_name, account_number, user, bank_type){
+            this.id = id,
+            this.bank_name = bank_name,
+            this.account_number= account_number,
+            this.user = user,
+            this.bank_type = bank_type
+        }
+    }
 
-    const [post_req, setPost] = useState(() => ({post:{title: '', description: '', date: '', grade: '', isDonation: false}, bankAccounts: []}))
+    const [post_req, setPost] = useState(() => ({
+        post:{
+            title: '',
+            description: '', 
+            date: '', grade: '', 
+            isDonation: false
+        }, 
+        bankAccounts: []
+    }));
+    const [bankAccount, setBankAccount] = useState(
+        {
+            id:null,
+            bank_name:"",
+            account_number:"",
+            user:null,
+            bank_type:""
+        }
+    )
 
     const handleSubmit = async (event) => {
         event.preventDefault()
@@ -39,7 +66,7 @@ const NewPost = () => {
                         aria-describedby="dni_help"
                         placeholder="Resume tu historia"
                         name="post-titulo"
-                        // onChange={(e) => setstate({ ...state, username: e.target.value })}
+                        onChange={(e) => setPost({ ...post_req, post: { ...post_req.post, title: e.target.value } })}
                         />
 
                         <label for="Descripcion" className="form-label mb-1">Descripción</label>
