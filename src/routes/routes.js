@@ -29,7 +29,7 @@ const RoutesComponent = () => (
         <Route exact path="/restorepass" element={<RestorePass />} />
         <Route exact path="/new-post" element={<NewPost />} />
         <Route exact path="/profile" element={<Profile />} />
-        <Route exact path="/updateUser" element={<UpdateUser userId={3}/> } />
+        <Route exact path="/updateUser" element={<UpdateUser userId={4}/> } />
         <Route exact path="/" element={<Home />} />
         <Route path="*" element={<Error />} />
     </Routes>
