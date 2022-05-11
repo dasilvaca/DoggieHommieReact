@@ -7,6 +7,16 @@ import LayOut from '../Layout/LayOut'
 import AddBankAccounts from '../components/AddBankAccounts'
 
 const NewPost = () => {
+    class bankAccountClass{
+        
+        constructor(id, bank_name, account_number, user, bank_type){
+            this.id = id,
+            this.bank_name = bank_name,
+            this.account_number= account_number,
+            this.user = user,
+            this.bank_type = bank_type
+        }
+    }
 
     const [post_req, setPost] = useState(() => (
         {

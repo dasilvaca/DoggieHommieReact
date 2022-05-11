@@ -8,11 +8,10 @@ import { backend_host } from '../global variables'
 
 const LogIn = () => {
   const [state, setstate] = useState(() => ({ username: '', password: '' }));
-  localStorage.setItem('username', '')
-  localStorage.setItem('user', '')
-  localStorage.setItem('token', '')
-  // ReactSession.localStorage('state', state);
-  // console.log('estado', state)
+  localStorage.removeItem('username', '')
+  localStorage.removeItem('user', '')
+  localStorage.removeItem('token', '')
+
   const handleSubmit = async (event) => {
     event.preventDefault()
     // console.log('estado', state)

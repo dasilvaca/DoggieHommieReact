@@ -7,10 +7,6 @@ const SignUp = () => {
   const handleSubmit = async (event) => {
     event.preventDefault()
 
-    // var name = state.user.first_name.split(" ");
-    // state.user.first_name = name[0] // TODO Modify Djangho uset model to have only first name and last name or just name
-    // state.user.last_name = name[1]
-
     if (state.user.password !== state.user.password_confirmation) {
       alert("Las contraseñas no coinciden")
       console.log('data', state)

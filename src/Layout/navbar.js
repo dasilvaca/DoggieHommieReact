@@ -8,7 +8,13 @@ import { useContext } from "react";
 
 
 const Navbar = () => {
-
+  const signOut = () => {
+    localStorage.removeItem("username");
+    localStorage.removeItem("token");
+    localStorage.removeItem("user_id");
+    localStorage.removeItem("user");
+    window.location.href = "/";
+  }
   return (
     <div className="navbar">
       <div id="logo">
@@ -18,13 +24,13 @@ const Navbar = () => {
       </div>
       <div id="nav-links">
         {
-          localStorage.getItem('username') != ''? (
+          localStorage.getItem('username')? (
             <>
               <Link to="/updateUser">
                 <img src={Avatar} style={{ height: "2rem", borderRadius: "30px", alt: "Avatar" }} />
               </Link>
               {/* <a href="login.php">Login</a> */}
-              <Link to="/">Sign Out</Link>
+              <Link to="/" onClick={signOut}>Sign Out</Link>
               {/* <a href="register.php">Register</a> */}
             </>
 

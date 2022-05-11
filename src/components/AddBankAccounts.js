@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const AddBankAccounts = () => {
+const AddBankAccounts = () => {
   return (
     <div className='row row-cols-2'>
         <div className='col col-rows-3'>
