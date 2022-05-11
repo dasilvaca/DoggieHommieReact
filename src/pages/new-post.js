@@ -20,31 +20,19 @@ const NewPost = () => {
 
     const [post_req, setPost] = useState(() => (
         {
-<<<<<<< HEAD
             post:
             {
-                title: '', 
-                description: '',
-                date: '', 
-                grade: '', 
-                isDonation: false,
-                state: null,
-                number_banned: null,
-                user: localStorage.getItem(user)
-                },
-                bankAccounts: []
-            }))
-=======
-            post: {
                 title: '',
                 description: '',
                 date: '',
                 grade: '',
-                isDonation: false
+                isDonation: false,
+                state: null,
+                number_banned: null,
+                user: localStorage.getItem('user')
             },
             bankAccounts: []
         }))
->>>>>>> 625c7df2f095e7823572251de8efb862ae009d96
 
     const handleSubmit = async (event) => {
         event.preventDefault()
@@ -107,7 +95,7 @@ const NewPost = () => {
                                             value=""
                                             id="flexCheckDefault"
                                             // checked={receiveDonations}
-                                            onClick = {() => toggleDonations(!receiveDonations) && console.log(receiveDonations)}
+                                            onClick={() => toggleDonations(!receiveDonations) && console.log(receiveDonations)}
                                             onChange={(e) => setPost({ ...post_req, post: { ...post_req.post, isDonation: e.target.checked } })}
                                         />
 
