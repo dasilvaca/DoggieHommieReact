@@ -19,8 +19,9 @@ const Posts = ({ posts }) => {
           ))
 
         ) : (
-          <h1>...Loading</h1>
-
+          <div class="spinner-border" role="status" style={{margin: "50%"}}>
+            <span class="sr-only">Loading...</span>
+          </div>
           // TODO: Add a loading animation
         )}
       </div>

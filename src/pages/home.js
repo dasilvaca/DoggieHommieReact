@@ -24,7 +24,7 @@ const Home = () => {
   return (
     <>
     <LayOut>
-      <div style={{  background: "linear-gradient(180deg, #44CCCC 0%, rgba(76, 44, 206, 0.93) 100%)",  border: "1px solid #222", minHeight: "88vh"}}>
+      <div style={{  background: "linear-gradient(180deg, #44CCCC 0%, rgba(76, 44, 206, 0.93) 100%)",  border: "1px solid #222", height: "100%"}}>
         <CreatePost />
         <Posts posts={characters}/>
       </div>
