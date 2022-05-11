@@ -17,6 +17,7 @@ const SignUp = () => {
       var x = await axios.post('http://localhost:8000/users', state);
       console.log('data', x)
       console.log('data', state)
+      window.location.href("/login")
     }
 
   }
