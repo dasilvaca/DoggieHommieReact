@@ -20,7 +20,6 @@ const NewPost = () => {
 
     const [post_req, setPost] = useState(() => (
         {
-<<<<<<< HEAD
             post:
             {
                 title: '', 
@@ -34,17 +33,6 @@ const NewPost = () => {
                 },
                 bankAccounts: []
             }))
-=======
-            post: {
-                title: '',
-                description: '',
-                date: '',
-                grade: '',
-                isDonation: false
-            },
-            bankAccounts: []
-        }))
->>>>>>> 625c7df2f095e7823572251de8efb862ae009d96
 
     const handleSubmit = async (event) => {
         event.preventDefault()
