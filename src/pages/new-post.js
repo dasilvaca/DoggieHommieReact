@@ -25,11 +25,11 @@ const NewPost = () => {
                 title: '', 
                 description: '',
                 date: '', 
-                grade: '', 
+                grade: 0, 
                 isDonation: false,
                 state: null,
                 number_banned: null,
-                user: localStorage.getItem("user")
+                user: parseInt(localStorage.getItem("user"))
                 },
                 bankAccounts: []
             }))
@@ -37,7 +37,7 @@ const NewPost = () => {
     const handleSubmit = async (event) => {
         event.preventDefault()
         // console.log('estado', state)
-        var x = await axios.post('http://localhost:8000/post', post_req)//, fetch)
+        var x = await axios.post('http://localhost:8000/post/', post_req)//, fetch)
         console.log('data', x)
     }
 
