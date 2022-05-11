@@ -18,7 +18,7 @@ const Navbar = () => {
         {
           logged_in? (
             <>
-              <Link to="/profile">
+              <Link to="/updateUser">
                 <img src={Avatar} style={{ height: "2rem", borderRadius: "30px", alt: "Avatar" }} />
               </Link>
               {/* <a href="login.php">Login</a> */}

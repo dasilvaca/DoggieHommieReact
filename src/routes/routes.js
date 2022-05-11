@@ -8,6 +8,7 @@ import RestorePass from '../pages/restore-pass';
 import NewPost from '../pages/new-post';
 import UpdateUser,{Foo} from '../pages/update-user';
 import { Profile } from '../pages/Profile';
+import LayOut from '../Layout/LayOut';
 
 
 // const PrivateRoutes = ({ component: Component, ...rest }) => (
@@ -28,7 +29,7 @@ const RoutesComponent = () => (
         <Route exact path="/restorepass" element={<RestorePass />} />
         <Route exact path="/new-post" element={<NewPost />} />
         <Route exact path="/profile" element={<Profile />} />
-        <Route exact path="/updateUser" element={<UpdateUser/>} />
+        <Route exact path="/updateUser" element={<UpdateUser userId={3}/> } />
         <Route exact path="/" element={<Home />} />
         <Route path="*" element={<Error />} />
     </Routes>

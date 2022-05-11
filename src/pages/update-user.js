@@ -1,32 +1,62 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaArrowAltCircleUp, FaRegShareSquare } from "react-icons/fa";
 import { AiOutlineDollar } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import LayOut from "../Layout/LayOut";
 
-function UpdateUser() {
+function UpdateUser({ userId }) {
+  //  const [isLoading, setIsLoading] = useState(true);
+  // const [data, setData] = useState(() => ({}));
+  const [user, setUser] = useState(() => ({
+    name: "",
+    email: "",
+    phone: "",
+    country: "",
+    city: "",
+  }));
+  const getUser = async () => {
+    console.log("hpta react de mierda");
+    try {
+      const { data } = await axios.get(
+        `http://localhost:8000/updateUser/${userId}`
+      );
+      setUser({
+        name: data.user.last_name,
+        country: data.pais,
+        city: data.ciudad,
+        phone: data.telefono,
+        email: data.user.email,
+      });
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  };
+
+  useEffect(() => {
+    getUser();
+  }, []);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    // delete state.user.password_confirmation;
-    var x = await axios.post("http://localhost:8000/updateUser/3", state);
-    console.log("data", x);
-    console.log("data", state)```
-      if (x.status === 200) {
-        localStorage.setItem('token', x.data.token)
-        localStorage.setItem('user', JSON.stringify(x.data.user))
-        window.location.href = '/login'
-      }
-      ```;
+    const payload = {
+      telefono: user.phone,
+      ciudad: user.city,
+      pais: user.country,
+    };
+    try {
+      var x = await axios.patch(
+        `http://localhost:8000/updateUser/${userId}`,
+        payload
+      );
+      
+    } catch (error) {
+      console.log(error.response.data)
+    }
   };
-  const [state, setstate] = useState(() => ({
-    name: null, //the entire name
-    pais: null,
-    telefono: null,
-    ciudad: null,
-  }));
 
   return (
+    <LayOut>
     <div
       className="container-fluid"
       style={{
@@ -42,14 +72,15 @@ function UpdateUser() {
         <div
           className="card rounded p-5"
           style={{
-            width: "674px",
+            width: "1200px",
             height: "max-content",
             borderRadius: "46px",
           }}
         >
-          <div className="row">
+          <div className="row pb-5">
             <div
-              className="col-6"
+              className="col-6 d-flex justify-content-start"
+              id="nombre"
               style={{
                 whiteSpace: "pre",
                 fontStyle: "normal",
@@ -59,11 +90,11 @@ function UpdateUser() {
                 textAlign: "center",
               }}
             >
-              <h1>Daniel Perez</h1>
-              <h2>Bogotá D.C</h2>
+              <h1> {user.name}</h1>
+              {/* <h1> {data["user"]} </h1> */}
             </div>
 
-            <div className="col-6">
+            <div className="col-6 d-flex justify-content-end">
               <h1
                 style={{
                   fontWeight: "700",
@@ -78,13 +109,14 @@ function UpdateUser() {
 
           <form onSubmit={handleSubmit}>
             <div className="row pb-5">
-              <div className="col-4 ">
+              <div className="col ">
                 <input
-                  className="my-3"
-                  placeholder="Nombre"
+                  disabled
+                  className="my-3 w-100"
+                  placeholder="nombre"
+                  value={user.name}
                   onChange={(e) => {
-                    setstate({ ...state, name: e.target.value });
-                    console.log(state);
+                    setUser({ ...user, name: e.target.value });
                   }}
                   style={{
                     borderRadius: "6px",
@@ -99,9 +131,12 @@ function UpdateUser() {
                   }}
                 ></input>
                 <input
-                  className="my-3"
+                  className="my-3 w-100"
                   placeholder="País"
-                  onChange={(e) => setstate({ ...state, pais: e.target.value })}
+                  value={user.country}
+                  onChange={(e) => {
+                    setUser({ ...user, country: e.target.value });
+                  }}
                   style={{
                     borderRadius: "6px",
                     borderWidth: "1",
@@ -116,14 +151,15 @@ function UpdateUser() {
                 ></input>
               </div>
 
-              <div className="col-4">
+              <div className="col">
                 <input
                   type="phone"
-                  className="my-3"
-                  placeholder="Celular"
-                  onChange={(e) =>
-                    setstate({ ...state, telefono: e.target.value })
-                  }
+                  className="my-3 w-100"
+                  placeholder="telefono"
+                  value={user.phone}
+                  onChange={(e) => {
+                    setUser({ ...user, phone: e.target.value });
+                  }}
                   style={{
                     borderRadius: "6px",
                     borderWidth: "1",
@@ -137,11 +173,12 @@ function UpdateUser() {
                   }}
                 ></input>
                 <input
-                  className="my-3"
+                  className="my-3 w-100"
                   placeholder="Ciudad"
-                  onChange={(e) =>
-                    setstate({ ...state, ciudad: e.target.value })
-                  }
+                  value={user.city}
+                  onChange={(e) => {
+                    setUser({ ...user, city: e.target.value });
+                  }}
                   style={{
                     borderRadius: "6px",
                     borderWidth: "1",
@@ -154,29 +191,22 @@ function UpdateUser() {
                     textColor: "rgb(51, 51, 51)",
                   }}
                 ></input>
-                <input
-                type="submit"
-                className="btn-primary bton"
-                placeholder="Guardar"
-                value="Guardar"
-                style={{ backgroundColor: "rgb(28, 28, 141)" }}
-              >
-              </input>
-
-                
               </div>
 
-              <div className="col-4">
-              <input
+              <div className="col">
+                <input
+                  disabled
                   type="email"
-                  className="my-3"
+                  className="my-3 w-100"
                   placeholder="Email"
-                  onChange={(e) =>
-                    setstate({ ...state, telefono: e.target.value })
-                  }
+                  value={user.email}
+                  onChange={(e) => {
+                    setUser({ ...user, email: e.target.value });
+                  }}
                   style={{
                     borderRadius: "6px",
-                    borderWidth: "1",
+                    borderWidth: "1px",
+
                     backgroundColor: "rgb(235, 235, 235)",
                     focusColor: "rgb(0, 153, 255)",
                     lineHeight: "1.4",
@@ -187,31 +217,40 @@ function UpdateUser() {
                   }}
                 ></input>
 
+                <input
+                  type="submit"
+                  className="btn-primary bton"
+                  placeholder="Guardar"
+                  value="Guardar"
+                  style={{
+                    backgroundColor: "rgb(28, 28, 141)",
+                    padding: "10px",
+                  }}
+                ></input>
               </div>
             </div>
           </form>
 
           <div className="row pt-5">
-            <div className="col-6">
+            <div className="col-4">
               <button
                 type="button"
-                className="btn btn-primary"
+                className="btn-primary bton"
                 style={{
                   backgroundColor: "rgb(28, 28, 141)",
                   textAlign: "center",
                   borderRadius: "8",
                 }}
               >
-              Cambiar contraseña
+                Cambiar contraseña
               </button>
             </div>
-            <div className="col-6">
-              
-            </div>
+            <div className="col-6"></div>
           </div>
         </div>
       </div>
     </div>
+    </LayOut>
   );
 }
 
