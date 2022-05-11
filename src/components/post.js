@@ -1,16 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
+import AppLogo from '../assets/img/4.png'
+import axios from 'axios'
+import { Link } from 'react-router-dom'
+import cors from 'cors'
+import { backend_host } from '../global variables'
 /* import { FaArrowAltCircleUp, FaRegShareSquare } from "react-icons/fa";
 import { AiOutlineDollar } from "react-icons/ai";
 import { ArrowRight } from 'react-bootstrap-icons';
 
  */
 
-const report = () => {
-  alert("Report has been sent")
-  
-}
 
-const Post = ({ photo, title, description, username_str }) => {
+
+const Post = ({ photo, title, description, username_str, post_report_id}) => {
+  const report = () => {
+    console.log(post_report_id)
+    alert("Report has been sent")
+    axios.patch("http://127.0.0.1:8000/post/RUD/" + String(post_report_id))
+    
+  }
   return (
     <div className="card mb-3 mt-2" style={{ width: "674px", height: "max-content" }}>
       <div className="row g-0">

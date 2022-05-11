@@ -22,17 +22,17 @@ const NewPost = () => {
         {
             post:
             {
-                title: '',
+                title: '', 
                 description: '',
-                date: '',
-                grade: '',
+                date: '', 
+                grade: '', 
                 isDonation: false,
                 state: null,
                 number_banned: null,
-                user: localStorage.getItem('user')
-            },
-            bankAccounts: []
-        }))
+                user: localStorage.getItem("user")
+                },
+                bankAccounts: []
+            }))
 
     const handleSubmit = async (event) => {
         event.preventDefault()
@@ -95,7 +95,7 @@ const NewPost = () => {
                                             value=""
                                             id="flexCheckDefault"
                                             // checked={receiveDonations}
-                                            onClick={() => toggleDonations(!receiveDonations) && console.log(receiveDonations)}
+                                            onClick = {() => toggleDonations(!receiveDonations) && console.log(receiveDonations)}
                                             onChange={(e) => setPost({ ...post_req, post: { ...post_req.post, isDonation: e.target.checked } })}
                                         />
 

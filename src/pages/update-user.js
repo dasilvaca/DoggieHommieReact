@@ -17,12 +17,12 @@ function UpdateUser({ userId }) {
     id : ""
   }));
   const getUser = async () => {
-    console.log("hpta react de mierda");
     try {
       const { data } = await axios.get(
         `http://localhost:8000/updateUser/${userId}`
       );
       console.log(data)
+      
       setUser({
         name: data.user.last_name,
         country: data.pais,
