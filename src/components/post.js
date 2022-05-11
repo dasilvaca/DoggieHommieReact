@@ -1,3 +1,4 @@
+import { textAlign } from '@mui/system'
 import React from 'react'
 /* import { FaArrowAltCircleUp, FaRegShareSquare } from "react-icons/fa";
 import { AiOutlineDollar } from "react-icons/ai";
@@ -22,11 +23,11 @@ const Post = ({ photo, title, description, username_str }) => {
                 borderRadius: "50%",
                 backgroundSize: "100% auto",
                 height: "100px",
-                margin: "10px"
+                margin: "10px",
               }} />
-              <p><strong> {username_str}</strong> </p>
+              <p style={{textAlign : "center", color:"#4A9FCD"}}><strong> {username_str}</strong> </p>
           </div>
-          <div className='row row-cols-3'>
+          <div className='row row-cols-3 mb-2'>
             <div className='col'>
               <img src={"https://icon-library.com/images/arrow-up-icon-png/arrow-up-icon-png-0.jpg"} className="img-fluid" alt="UpVote icon" />
             </div>
@@ -45,7 +46,7 @@ const Post = ({ photo, title, description, username_str }) => {
             <p className="card-text">{description}</p>
           </div>
         </div>
-        <img src={"http://cdn.onlinewebfonts.com/svg/img_193335.png"} className="img-fluid" alt="report icon" style={{width : "2rem", height:"2rem", marginLeft:"30px", marginTop:"20px"}} onClick={report} />
+        <img src={"http://cdn.onlinewebfonts.com/svg/img_152201.png"} className="img-fluid" alt="report icon" style={{width : "2rem", height:"2rem", marginLeft:"30px", marginTop:"20px"}} onClick={report} />
       </div>
     </div>
   )

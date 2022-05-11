@@ -26,7 +26,7 @@ const Navbar = () => {
         {
           localStorage.getItem('username')? (
             <>
-              <Link to="/updateUser">
+              <Link to="/profile">
                 <img src={Avatar} style={{ height: "2rem", borderRadius: "30px", alt: "Avatar" }} />
               </Link>
               {/* <a href="login.php">Login</a> */}
