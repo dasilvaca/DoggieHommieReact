@@ -29,7 +29,7 @@ const NewPost = () => {
                 isDonation: false,
                 state: null,
                 number_banned: null,
-                user: localStorage.getItem(user)
+                user: localStorage.getItem("user")
                 },
                 bankAccounts: []
             }))

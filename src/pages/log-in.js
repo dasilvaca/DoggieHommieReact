@@ -23,7 +23,7 @@ const LogIn = () => {
       localStorage.setItem('token', x.data.token)
       // localStorage.setItem('user',  JSON.stringify(x.data.user))
       // console.log(localStorage.getItem('user'), x.data.data.idUser)
-      localStorage.setItem('user',console.log(x.data.idUser))
+      localStorage.setItem('user',x.data.idUser)
       localStorage.setItem('username', x.data.nombreUser)
       window.location.href = '/'
       
