@@ -5,6 +5,7 @@ import ProfilePic from '../assets/img/4.png'
 const CreatePost = () => {
 
     return (
+        localStorage.getItem('username') != ''? (
         <>
             <div className="container justify-content-center">
                 <div className="row justify-content-center">
@@ -32,6 +33,10 @@ const CreatePost = () => {
 
             </div>
         </>
+    ):(
+        <>
+        </>
+    )
     )
 }
 
