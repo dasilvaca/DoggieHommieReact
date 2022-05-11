@@ -52,7 +52,7 @@ const NewPost = () => {
                                 Publica Algo
                             </p>
                             <form onSubmit={handleSubmit} encType="multipart/form-data">
-                                <div style={{ padding: "1%" }}><label for="titulo" className="form-label mb-1">Titulo</label>
+                                <div style={{ padding: "1%" }}><label form="titulo" className="form-label mb-1">Titulo</label>
                                     <input
                                         type="text"
                                         className="form-control mb-3"
@@ -63,7 +63,7 @@ const NewPost = () => {
                                         onChange={(e) => setPost({ ...post_req, post: { ...post_req.post, title: e.target.value } })}
                                     />
 
-                                    <label for="Descripcion" className="form-label mb-1">Descripción</label>
+                                    <label form="Descripcion" className="form-label mb-1">Descripción</label>
                                     <textarea
                                         className="form-control mb-3"
                                         id="post-descripcion"
@@ -74,7 +74,7 @@ const NewPost = () => {
                                         onChange={(e) => setPost({ ...post_req, post: { ...post_req.post, description: e.target.value } })}
                                     />
 
-                                    <label for="post-foto" className="form-label mb-1">Añade una foto</label>
+                                    <label form="post-foto" className="form-label mb-1">Añade una foto</label>
                                     <input
                                         type="file"
                                         accept='image/*'
@@ -90,12 +90,13 @@ const NewPost = () => {
                                             type="checkbox"
                                             value=""
                                             id="flexCheckDefault"
-                                            checked={receiveDonations}
-                                            onClick = {() => toggleDonations(!receiveDonations)}
+                                            // checked={receiveDonations}
+                                            onClick = {() => toggleDonations(!receiveDonations) && console.log(receiveDonations)}
+                                            onChange={(e) => setPost({ ...post_req, post: { ...post_req.post, isDonation: e.target.checked } })}
                                         />
 
 
-                                        <label className="form-check-label" for="flexCheckDefault">
+                                        <label className="form-check-label" form="flexCheckDefault">
                                             Desea recibir donaciones
                                         </label>
                                     </div></div>
