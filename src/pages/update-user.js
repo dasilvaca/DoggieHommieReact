@@ -19,16 +19,15 @@ function UpdateUser({ userId }) {
   const getUser = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:8000/updateUser/${userId}`
+        `http://localhost:8000/updateUser/${parseInt(localStorage.getItem("user"))}`
       );
       console.log(data)
-      
       setUser({
-        name: data.user.last_name,
+        name: data.user.first_name,
         country: data.pais,
         city: data.ciudad,
         phone: data.telefono,
-        email: data.user.email,
+        email: data.user.username,
         id : data.numero_documento
       });
     } catch (error) {
@@ -49,7 +48,7 @@ function UpdateUser({ userId }) {
     };
     try {
       var x = await axios.patch(
-        `http://localhost:8000/updateUser/${userId}`,
+        `http://localhost:8000/updateUser/${parseInt(localStorage.getItem("user"))}`,
         payload
       );
     } catch (error) {
