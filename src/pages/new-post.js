@@ -18,29 +18,22 @@ const NewPost = () => {
         }
     }
 
-    const [post_req, setPost] = useState(() => ({
-        post:{
-            title: '',
-            description: '', 
-            date: '', grade: '', 
-            isDonation: false
-        }, 
-        bankAccounts: []
-    }));
-    const [bankAccount, setBankAccount] = useState(
+    const [post_req, setPost] = useState(() => (
         {
-            id:null,
-            bank_name:"",
-            account_number:"",
-            user:null,
-            bank_type:""
-        }
-    )
+            post:{
+                title: '', 
+                description: '',
+                 date: '', 
+                 grade: '', 
+                 isDonation: false
+                },
+                bankAccounts: []
+            }))
 
     const handleSubmit = async (event) => {
         event.preventDefault()
         // console.log('estado', state)
-        var x = await axios.post('http://localhost:8000/login', post_req)//, fetch)
+        var x = await axios.post('http://localhost:8000/post', post_req)//, fetch)
         console.log('data', x)
     }
 
@@ -77,7 +70,7 @@ const NewPost = () => {
                         aria-describedby="dni_help"
                         placeholder="Añade tu historia aqui"
                         name="post-descripcion"
-                        // onChange={(e) => setstate({ ...state, username: e.target.value })}
+                        onChange={(e) => setPost({ ...post_req, post: { ...post_req.post, description: e.target.value } })}
                         />
 
                         <label for="post-foto" className="form-label mb-1">Añade una foto</label>
