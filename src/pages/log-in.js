@@ -3,22 +3,29 @@ import AppLogo from '../assets/img/4.png'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import cors from 'cors'
-import Navbar from '../Layout/navbar'
+import { backend_host } from '../global variables'
+
 
 const LogIn = () => {
   const [state, setstate] = useState(() => ({ username: '', password: '' }));
-
+  localStorage.setItem('username', '')
+  localStorage.setItem('user', '')
+  localStorage.setItem('token', '')
+  // ReactSession.localStorage('state', state);
   // console.log('estado', state)
   const handleSubmit = async (event) => {
     event.preventDefault()
     // console.log('estado', state)
-    var x = await axios.post('http://localhost:8000/login', state)//, fetch)
-    console.log('data', x)
+    console.log(backend_host + '/login')
+    var x = await axios.post('http://localhost:8000' + '/login', state)//, fetch)
+    console.log('data', x.user)
 
     if (x.status === 200) {
       localStorage.setItem('token', x.data.token)
-      localStorage.setItem('user', JSON.stringify(x.data.user))
-      Navbar.logged_in = true
+      // localStorage.setItem('user',  JSON.stringify(x.data.user))
+      // console.log(localStorage.getItem('user'), x.data.data.idUser)
+      localStorage.setItem('user',console.log(x.data.idUser))
+      localStorage.setItem('username', x.data.nombreUser)
       window.location.href = '/'
       
     }

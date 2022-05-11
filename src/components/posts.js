@@ -1,6 +1,6 @@
 import React from 'react'
 import Post from '../components/post';
-
+import Avatar from '../assets/img/Avatar.jpg';
 
 const Posts = ({ posts }) => {
   return (
@@ -9,9 +9,11 @@ const Posts = ({ posts }) => {
         {posts.length > 0 ? (
           posts.map((post) => (
             <Post
-              photo={post.image}
-              description={post.episode}
-              title={post.name}
+              // photo={post.image}
+              photo={Avatar}
+              description={post.description}
+              title={post.title}
+              username_str={post.userData.user.first_name + " " + post.userData.user.last_name}
             />
           ))
         ) : (

@@ -2,10 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/img/Doggie Hommie.png";
 import Avatar from "../assets/img/Avatar.jpg";
+import logged from '../global variables'
+import backend_host from '../global variables'
+import { useContext } from "react";
 
 
 const Navbar = () => {
-  var logged_in = true;
 
   return (
     <div className="navbar">
@@ -16,7 +18,7 @@ const Navbar = () => {
       </div>
       <div id="nav-links">
         {
-          logged_in? (
+          localStorage.getItem('username') != ''? (
             <>
               <Link to="/updateUser">
                 <img src={Avatar} style={{ height: "2rem", borderRadius: "30px", alt: "Avatar" }} />

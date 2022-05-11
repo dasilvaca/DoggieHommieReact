@@ -19,7 +19,7 @@ const CreatePost = () => {
                                 </div>
                                 <div className="row">
                                 <Link to="/new-post" style={{textDecoration: "None"}}>
-                                    <input style={{}} type="text" className="form-control" placeholder="Ask for help" onClick={{}} />
+                                    <input style={{}} type="text" className="form-control" placeholder="Ask for help" onClick={()=>{return true}} />
                                 </Link>
                                 </div>
                             </div>

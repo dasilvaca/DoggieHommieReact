@@ -4,7 +4,13 @@ import { AiOutlineDollar } from "react-icons/ai";
 import { ArrowRight } from 'react-bootstrap-icons';
 
  */
-const Post = ({ photo, title, description }) => {
+
+const report = () => {
+  alert("Report has been sent")
+  
+}
+
+const Post = ({ photo, title, description, username_str }) => {
   return (
     <div className="card mb-3 mt-2" style={{ width: "674px", height: "max-content" }}>
       <div className="row g-0">
@@ -18,7 +24,7 @@ const Post = ({ photo, title, description }) => {
                 height: "100px",
                 margin: "10px"
               }} />
-              <p> Nombre de Usuario </p>
+              <p><strong> {username_str}</strong> </p>
           </div>
           <div className='row row-cols-3'>
             <div className='col'>
@@ -39,7 +45,7 @@ const Post = ({ photo, title, description }) => {
             <p className="card-text">{description}</p>
           </div>
         </div>
-        <img src={"http://cdn.onlinewebfonts.com/svg/img_193335.png"} className="img-fluid" alt="report icon" style={{width : "2rem", height:"2rem", marginLeft:"30px", marginTop:"20px"}} />
+        <img src={"http://cdn.onlinewebfonts.com/svg/img_193335.png"} className="img-fluid" alt="report icon" style={{width : "2rem", height:"2rem", marginLeft:"30px", marginTop:"20px"}} onClick={report} />
       </div>
     </div>
   )

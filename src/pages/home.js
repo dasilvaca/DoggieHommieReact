@@ -9,9 +9,10 @@ const Home = () => {
 
   const getCharacters = async () => {
     const { data } = await axios.get(
-      'https://rickandmortyapi.com/api/character'
+      'http://127.0.0.1:8000/post/getAll'
     );
-    setCharacters(data.results);
+    console.log(data)
+    setCharacters(data);
   };
 
   useEffect(() => {
