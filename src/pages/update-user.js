@@ -50,7 +50,14 @@ function UpdateUser({ userId }) {
       var x = await axios.patch(
         `http://localhost:8000/updateUser/${parseInt(localStorage.getItem("user"))}`,
         payload
+        
       );
+      if (x.status === 200) {
+        window.alert("El perfil se ha actualizado correctamente")
+        window.location.href = '/'
+      }else{
+        window.alert("Error. Verifica los datos")
+      }
     } catch (error) {
       console.log(error.response.data);
     }

@@ -16,6 +16,7 @@ const Post = ({ photo, title, description, username_str, post_report_id}) => {
     console.log(x.status)
     if (x.status === 200) {
       window.alert("El post ha sido reportado")
+      window.location.href = '/'
     }else{
       window.alert("Error. Verifica los datos")
     }
