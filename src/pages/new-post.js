@@ -10,12 +10,16 @@ const NewPost = () => {
 
     const [post_req, setPost] = useState(() => (
         {
-            post:{
+            post:
+            {
                 title: '', 
                 description: '',
-                 date: '', 
-                 grade: '', 
-                 isDonation: false
+                date: '', 
+                grade: '', 
+                isDonation: false,
+                state: null,
+                number_banned: null,
+                user: localStorage.getItem(user)
                 },
                 bankAccounts: []
             }))
