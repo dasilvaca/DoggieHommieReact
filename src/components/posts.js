@@ -17,6 +17,7 @@ const Posts = ({ posts }) => {
               post_report_id = {post.id}
             />
           ))
+
         ) : (
           <h1>...Loading</h1>
 
