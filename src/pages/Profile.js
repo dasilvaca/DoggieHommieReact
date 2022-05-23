@@ -27,12 +27,31 @@ export const Profile = () => {
 
   return (
     <LayOut>
-      <div style={{  background: "linear-gradient(180deg, #44CCCC 0%, rgba(76, 44, 206, 0.93) 100%)",  border: "1px solid #222", minHeight: "88vh"}}>
-{/*         <h1>{{name}}</h1> */}
-        <Link to="/updateUser">
-          <button type="button" class="btn btn-primary" style={{margin :"5%"}}>Editar perfil</button>
-        </Link>
-        <Posts posts={characters}/>
+      <div className="container-fluid overflow-auto" style={{ margin: '0px', padding: '0px' }}>
+        <div className="container-fluid overflow-auto" style={{ height: 'auto', margin: '0', padding: '3%', background: 'linear-gradient(180deg, #44CCCC 0%, rgba(76, 44, 206, 0.93) 100%)', minHeight: '300px' }}>
+          <div
+              className="shadow-lg row d-block"
+              style={{ height: 'auto', minHeight: '100%', borderRadius: '20px', backgroundColor: 'white' }}
+          >
+            <Link to="/updateUser">
+              <button type="button" class="btn btn-primary" style={{margin :"5%"}}>Editar perfil</button>
+            </Link>
+
+            {/* <div style={{float: "right", borderColor: "red", borderStyle: "none", marginRight: "10px"}}>
+            <div style={{display: "inline-block"}} >
+                <img alt="user_card" className="rounded-circle" src=""
+                     style={{maxHeight: "100px", maxWidth: "100px", width: "100%", float: "left", clear: "both", display: "inline"}}/>
+                <div style={{display: "inline-block", maxWidth: "16em", paddingLeft: "5px", textAlign: "center", margin: "auto",paddingTop: "18px"}}>
+                    <h3 style={{display: "block", maxWidth: "18em", wordWrap: "break-word", margin: "0"}}>
+                        </h3>
+                    <a href="" style={{display: "block", float: "right", textAlign: "center", color: "#504E4E"}}>Cerrar sesión</a>
+                </div>
+            </div>
+        </div>
+ */}
+            <Posts posts={characters}/>
+          </div>
+        </div>
       </div>
     </LayOut>
   );

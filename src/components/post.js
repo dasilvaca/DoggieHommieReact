@@ -23,7 +23,7 @@ const Post = ({ photo, title, description, username_str, post_report_id}) => {
     
   }
   return (
-    <div className="card mb-3 mt-2" style={{ width: "674px", height: "max-content" }}>
+    <div className="card mb-3 m-2" style={{ width: "674px", height: "max-content" }}>
       <div className="row g-0">
         <div className="col-md-2 col-rows-2" >
           <div className='row'>
@@ -56,7 +56,7 @@ const Post = ({ photo, title, description, username_str, post_report_id}) => {
             <p className="card-text">{description}</p>
           </div>
         </div>
-        <img src={"http://cdn.onlinewebfonts.com/svg/img_152201.png"} className="img-fluid" alt="report icon" style={{width : "2rem", height:"2rem", marginLeft:"30px", marginTop:"20px"}} onClick={report} />
+        <img id='ReportPost' src={"http://cdn.onlinewebfonts.com/svg/img_152201.png"} className="img-fluid" alt="report icon" style={{width : "2rem", height:"2rem", marginLeft:"30px", marginTop:"20px"}} onClick={report} />
       </div>
     </div>
   )
