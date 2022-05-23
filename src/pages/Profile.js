@@ -34,14 +34,14 @@ export const Profile = () => {
               style={{ height: 'auto', minHeight: '100%', borderRadius: '20px', backgroundColor: 'white', width : "60%" , marginLeft : "20%"}}
           >
 
-        <div style={{float: "right", borderColor: "red", borderStyle: "none", marginRight: "10px"}}>
-            <div style={{display: "inline-block"}} >
-                <img alt="user_card" className="rounded-circle" src=""
+        <div style={{ borderStyle: "none"}}>
+            <div style={{display: "inline-block" , marginLeft: "12%",marginTop : "4%"}} >
+                <img alt="" className="rounded-circle" src=""
                      style={{maxHeight: "100px", maxWidth: "100px", width: "100%", float: "left", clear: "both", display: "inline"}}/>
                 <div style={{display: "inline-block", maxWidth: "16em", paddingLeft: "5px", textAlign: "center", margin: "auto",paddingTop: "18px"}}>
-                    <h3 style={{display: "block", maxWidth: "18em", wordWrap: "break-word", margin: "0"}}>
-                        Nombre </h3>
-                    <a href="" style={{display: "block", float: "right", textAlign: "center", color: "#504E4E"}}>Cerrar sesión</a>
+                    <h3 style={{display: "block", maxWidth: "15em", wordWrap: "break-word", margin: "0"}}>
+                        {name}</h3>
+                    <a href="" style={{display: "block", textAlign: "center", color: "#504E4E"}}>Cerrar sesión</a>
                 </div>
             </div>
         </div>
