@@ -16,7 +16,19 @@ const Dropdown = () => {
         <img src={Avatar} style={{ height: "2rem", borderRadius: "30px", alt: "Avatar" }} />
         </Link>
         <Link to="/" onClick={signOut}>Sign Out</Link>
+        {/* <div className="dropdown">
+            <a className="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown">
+                Dropdown link
+            </a>
+
+            <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <li><a className="dropdown-item" href="#">Action</a></li>
+                <li><a className="dropdown-item" href="#">Another action</a></li>
+                <li><a className="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+        </div> */}
     </>
+    
   )
 }
 
