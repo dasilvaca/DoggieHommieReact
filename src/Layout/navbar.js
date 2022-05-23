@@ -29,9 +29,7 @@ const Navbar = () => {
               <Link to="/profile">
                 <img src={Avatar} style={{ height: "2rem", borderRadius: "30px", alt: "Avatar" }} />
               </Link>
-              {/* <a href="login.php">Login</a> */}
               <Link to="/" onClick={signOut}>Sign Out</Link>
-              {/* <a href="register.php">Register</a> */}
             </>
 
           ) : (
