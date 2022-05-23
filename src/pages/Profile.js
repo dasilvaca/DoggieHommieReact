@@ -47,7 +47,7 @@ export const Profile = () => {
         </div>
 
             <Link to="/updateUser">
-              <button type="button" class="btn btn-primary" style={{margin :"5%", backgroundColor : "#37384F", borderColor : "#37384F"}}>Editar perfil</button>
+              <button type="button" class="btn btn-primary" style={{marginLeft :"12%", backgroundColor : "#37384F", borderColor : "#37384F", marginTop:"1%", marginBottom:"3%"}}>Editar perfil</button>
             </Link>
 
             
