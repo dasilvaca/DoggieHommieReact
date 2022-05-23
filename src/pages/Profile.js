@@ -7,6 +7,14 @@ import axios from "axios";
 import Posts from '../components/posts';
 
 export const Profile = () => {
+  const signOut = () => {
+    localStorage.removeItem("username");
+    localStorage.removeItem("token");
+    localStorage.removeItem("user_id");
+    localStorage.removeItem("user");
+    window.location.href = "/";
+  }
+
   const [characters, setCharacters] = useState([]);
 
   const user = +localStorage.getItem("user")
@@ -41,7 +49,7 @@ export const Profile = () => {
                 <div style={{display: "inline-block", maxWidth: "16em", paddingLeft: "5px", textAlign: "center", margin: "auto",paddingTop: "18px"}}>
                     <h3 style={{display: "block", maxWidth: "15em", wordWrap: "break-word", margin: "0"}}>
                         {name}</h3>
-                    <a href="" style={{display: "block", textAlign: "center", color: "#504E4E"}}>Cerrar sesión</a>
+                    <a href="/" onClick={signOut} style={{display: "block", textAlign: "center", color: "#504E4E"}}>Cerrar sesión</a>
                 </div>
             </div>
         </div>
