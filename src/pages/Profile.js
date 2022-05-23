@@ -31,24 +31,27 @@ export const Profile = () => {
         <div className="container-fluid overflow-auto" style={{ height: 'auto', margin: '0', padding: '3%', background: 'linear-gradient(180deg, #44CCCC 0%, rgba(76, 44, 206, 0.93) 100%)', minHeight: '300px' }}>
           <div
               className="shadow-lg row d-block"
-              style={{ height: 'auto', minHeight: '100%', borderRadius: '20px', backgroundColor: 'white' }}
+              style={{ height: 'auto', minHeight: '100%', borderRadius: '20px', backgroundColor: 'white', width : "60%" , marginLeft : "20%"}}
           >
-            <Link to="/updateUser">
-              <button type="button" class="btn btn-primary" style={{margin :"5%"}}>Editar perfil</button>
-            </Link>
 
-            {/* <div style={{float: "right", borderColor: "red", borderStyle: "none", marginRight: "10px"}}>
+        <div style={{float: "right", borderColor: "red", borderStyle: "none", marginRight: "10px"}}>
             <div style={{display: "inline-block"}} >
                 <img alt="user_card" className="rounded-circle" src=""
                      style={{maxHeight: "100px", maxWidth: "100px", width: "100%", float: "left", clear: "both", display: "inline"}}/>
                 <div style={{display: "inline-block", maxWidth: "16em", paddingLeft: "5px", textAlign: "center", margin: "auto",paddingTop: "18px"}}>
                     <h3 style={{display: "block", maxWidth: "18em", wordWrap: "break-word", margin: "0"}}>
-                        </h3>
+                        Nombre </h3>
                     <a href="" style={{display: "block", float: "right", textAlign: "center", color: "#504E4E"}}>Cerrar sesión</a>
                 </div>
             </div>
         </div>
- */}
+
+            <Link to="/updateUser">
+              <button type="button" class="btn btn-primary" style={{margin :"5%", backgroundColor : "#37384F", borderColor : "#37384F"}}>Editar perfil</button>
+            </Link>
+
+            
+
             <Posts posts={characters}/>
           </div>
         </div>
