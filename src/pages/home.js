@@ -12,7 +12,7 @@ const Home = () => {
       'http://127.0.0.1:8000/post/getAll'
     );
     console.log(data)
-    setCharacters(data);
+    setCharacters(data.results);
   };
 
   useEffect(() => {
