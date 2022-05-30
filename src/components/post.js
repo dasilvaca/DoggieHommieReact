@@ -9,10 +9,10 @@ import { ArrowRight } from 'react-bootstrap-icons';
 
 
 
-const Post = ({ photo, title, description, username_str, post_report_id}) => {
+const Post = ({ photo, title, description, username_str, post_config_id}) => {
   const report = async () => {
-    console.log(post_report_id)
-    var x = await axios.patch("http://127.0.0.1:8000/post/RUD/" + String(post_report_id))
+    console.log(post_config_id)
+    var x = await axios.patch("http://127.0.0.1:8000/post/RUD/" + String(post_config_id))
     console.log(x.status)
     if (x.status === 200) {
       window.alert("El post ha sido reportado")
@@ -22,6 +22,16 @@ const Post = ({ photo, title, description, username_str, post_report_id}) => {
     }
     
   }
+
+  const upvote = async () =>{
+    var upRequest = await axios.patch("http://127.0.0.1:8000/post/RUD/" + String(post_config_id, 'upvote : true'))
+    console.log(upRequest.status)
+    if (upRequest.status === 200) {
+      window.alert("Has dado upvote :)")
+      window.location.href = '/'
+    }
+  }
+  
   return (
     <div className="card mb-3 m-2" style={{ width: "674px", height: "max-content" }}>
       <div className="row g-0">
@@ -39,7 +49,7 @@ const Post = ({ photo, title, description, username_str, post_report_id}) => {
           </div>
           <div className='row row-cols-3 mb-2'>
             <div className='col'>
-              <img src={"https://icon-library.com/images/arrow-up-icon-png/arrow-up-icon-png-0.jpg"} className="img-fluid" alt="UpVote icon" />
+              <img src={"https://icon-library.com/images/arrow-up-icon-png/arrow-up-icon-png-0.jpg"} className="img-fluid" alt="UpVote icon" onClick={upvote} />
             </div>
             <div className='col'>
               <img src={"https://cdn-icons-png.flaticon.com/512/21/21004.png"} className="img-fluid" alt="Donar icon" />

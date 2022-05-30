@@ -14,7 +14,7 @@ const Posts = ({ posts }) => {
               description={post.description}
               title={post.title}
               username_str={post.userData.user.first_name + " " + post.userData.user.last_name}
-              post_report_id = {post.id}
+              post_config_id = {post.id}
             />
           ))
 
