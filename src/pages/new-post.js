@@ -30,6 +30,7 @@ const NewPost = () => {
                 state: null,
                 number_banned: null,
                 user: parseInt(localStorage.getItem("user")),
+                images: []
                 },
                 bankAccounts: []
             }))
