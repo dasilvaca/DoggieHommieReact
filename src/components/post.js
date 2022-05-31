@@ -74,8 +74,6 @@ const Post = ({ photo, title, description, username_str, post_config_id }) => {
           </div>
           <PostButtons post_config_id={post_config_id}/>
 
-
-          F
         </div>
         <div className="col-md-8">
           <div className="card-body">
