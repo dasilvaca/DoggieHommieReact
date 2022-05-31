@@ -54,7 +54,6 @@ const AddBankAccounts = () => {
                         style={{ 
                             width: "60%", 
                             margin: "0 0 16px 0" }} 
-                        required='True'
                         onChange={(e) => {setNewBankAccounts({...newBankAccount, bank_name: e.target.value})}}
                     >
                         <option defaultValue value=""> --Seleccione una banco-- </option>
@@ -71,7 +70,6 @@ const AddBankAccounts = () => {
                         style={{ 
                             width: "60%", 
                             margin: "0 0 16px 0" }} 
-                        required='True'
                         onChange={(e) => {setNewBankAccounts({...newBankAccount, bank_type: e.target.value})}}
                     >
                         <option defaultValue="" value=""> --Tipo de cuenta-- </option>
