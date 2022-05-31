@@ -9,7 +9,7 @@ const Home = () => {
 
   const getCharacters = async () => {
     const { data } = await axios.get(
-      'http://127.0.0.1:8000/post/getAll?limit=20'
+      'http://127.0.0.1:8000/post/getAll' //?limit=20
     );
     console.log(data)
     setCharacters(data.results);
@@ -19,7 +19,6 @@ const Home = () => {
     getCharacters();
   }, []);
 
-  // console.log('characters', characters);
 
   return (
     <>

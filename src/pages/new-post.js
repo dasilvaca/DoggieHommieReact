@@ -30,14 +30,12 @@ const NewPost = () => {
                 state: null,
                 number_banned: null,
                 user: parseInt(localStorage.getItem("user")),
-                // images : []
                 },
                 bankAccounts: []
             }))
 
     const handleSubmit = async (event) => {
         event.preventDefault()
-        // console.log('estado', state)
         var x = await axios.post('http://localhost:8000/post/', post_req)//, fetch)
 
     
