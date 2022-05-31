@@ -12,7 +12,7 @@
   margin: 0%;
 }
 
-body {
+body, html {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
@@ -20,6 +20,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--fondo) !important;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 code {
@@ -78,6 +81,11 @@ code {
   margin: 5px;
 }
 
+.my_card{
+  width: 674px !important;
+  height: max-content;
+}
+
 .bton {
   background-color: #c6ab7c !important;
   border: None;
@@ -87,6 +95,7 @@ code {
   margin-top: 10px;
   font-size: large;
 }
+
 
 svg {
   position: absolute;
@@ -119,37 +128,42 @@ svg {
   background: #68c950;
   padding: 8px 25px;
   border-radius: 4px;
-  color: #FFF;
+  color: #fff;
   font-weight: bold;
   font-size: 14px;
   transition: all 0.3s linear;
   cursor: pointer;
   text-decoration: none;
-  margin-right: 10px
+  margin-right: 10px;
 }
 .buttons-con .action-link-wrap a:hover {
-  background: #5A5C6C;
+  background: #5a5c6c;
   color: #fff;
 }
 
-#Polygon-1 , #Polygon-2 , #Polygon-3 , #Polygon-4 , #Polygon-4, #Polygon-5 {
+#Polygon-1,
+#Polygon-2,
+#Polygon-3,
+#Polygon-4,
+#Polygon-4,
+#Polygon-5 {
   animation: float 1s infinite ease-in-out alternate;
 }
 #Polygon-2 {
-  animation-delay: .2s; 
+  animation-delay: 0.2s;
 }
 #Polygon-3 {
-  animation-delay: .4s; 
+  animation-delay: 0.4s;
 }
 #Polygon-4 {
-  animation-delay: .6s; 
+  animation-delay: 0.6s;
 }
 #Polygon-5 {
-  animation-delay: .8s; 
+  animation-delay: 0.8s;
 }
 
 @keyframes float {
-	100% {
+  100% {
     transform: translateY(20px);
   }
 }
@@ -168,4 +182,45 @@ svg {
     margin-left: -190px;
     text-align: center;
   }
+}
+
+
+
+#boton{
+
+	padding: 10px;
+
+	background: orange;
+
+	width: max-content;
+
+	cursor: pointer;
+
+	margin-top: 10px;
+
+	margin-bottom: 10px;
+
+	box-shadow: 0px 0px 1px #000;
+
+	display: inline-block;
+
+}
+
+
+
+
+#caja{
+
+	width: 100%;
+
+	margin: auto;
+
+	height: 0px;
+
+	background: #000;
+
+	box-shadow: 10px 10px 3px #D8D8D8;
+
+	transition: height .4s;
+
 }

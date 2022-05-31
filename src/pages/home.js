@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Posts from '../components/posts';
+import CreatePost from '../components/createPost';
 import LayOut from '../Layout/LayOut';
 
 const Home = () => {
@@ -8,9 +9,10 @@ const Home = () => {
 
   const getCharacters = async () => {
     const { data } = await axios.get(
-      'https://rickandmortyapi.com/api/character'
+      'http://127.0.0.1:8000/post/getAll'
     );
-    setCharacters(data.results);
+    console.log(data)
+    setCharacters(data);
   };
 
   useEffect(() => {
@@ -22,7 +24,8 @@ const Home = () => {
   return (
     <>
     <LayOut>
-      <div style={{  background: "linear-gradient(180deg, #44CCCC 0%, rgba(76, 44, 206, 0.93) 100%)",  border: "1px solid #222",}}>
+      <div style={{  background: "linear-gradient(180deg, #44CCCC 0%, rgba(76, 44, 206, 0.93) 100%)",  border: "1px solid #222", height: "100%"}}>
+        <CreatePost />
         <Posts posts={characters}/>
       </div>
     </LayOut>
