@@ -2,11 +2,7 @@ import { textAlign } from '@mui/system'
 import React from 'react';
 import axios from 'axios';
 import { Modal } from 'bootstrap';
-/* import { FaArrowAltCircleUp, FaRegShareSquare } from "react-icons/fa";
-import { AiOutlineDollar } from "react-icons/ai";
-import { ArrowRight } from 'react-bootstrap-icons';
 
- */
 
 const Post = ({ photo, title, description, username_str, post_config_id }) => {
   const report = async () => {
@@ -74,52 +70,10 @@ const Post = ({ photo, title, description, username_str, post_config_id }) => {
               <strong> {username_str}</strong>{" "}
             </p>
           </div>
-          {/* <div className='row row-cols-3 mb-2'>
-            <div className='col'>
-              <img src={"https://icon-library.com/images/arrow-up-icon-png/arrow-up-icon-png-0.jpg"} className="img-fluid" alt="UpVote icon" />
-            </div>
-            <div className='col'>
 
-              <img
-                src={"https://cdn-icons-png.flaticon.com/512/21/21004.png"}
-                className="img-fluid"
-                alt="Donar icon"
-                onClick={payment}
-                data-toggle="modal"
-                data-target="#exampleModalCenter"
-              />
-
-
-              <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div className="modal-dialog" role="document">
-                  <div className="modal-content">
-                    <div className="modal-header">
-                      <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
-                      <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div className="modal-body">
-                      ...
-                    </div>
-                    <div className="modal-footer">
-                      <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                      <button type="button" className="btn btn-primary">Save changes</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-
-            <div className='col'>
-              <img src={"https://cdn0.iconfinder.com/data/icons/multimedia-261/32/Send-512.png"} className="img-fluid" alt="Share icon" />
-            </div>
-          </div>
-        </div> */}
 
           <div className="btn-group" style={{ height: "32px", width: "100%", marginBottom: "6px", padding: 0 }}>
-            <button type="button" className="btn btn-outline-secondary" style={{ padding: "5px", top: 0, bottom: 0 }}>
+            <button type="button" className="btn btn-outline-secondary" style={{ padding: "5px", top: 0, bottom: 0 }} onClick={upvote} >
               <svg xmlns="http://www.w3.org/2000/svg" style={{ margin: "0", width: "25px", height: "25px", position: 'initial', padding: "0", paddingBottom: "3px" }} fill="currentColor" className="bi bi-arrow-up-square" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm8.5 9.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"></path>
               </svg>
