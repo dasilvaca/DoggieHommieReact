@@ -19,7 +19,7 @@ const Home = () => {
     getCharacters();
   }, []);
 
-  console.log('characters', characters);
+  // console.log('characters', characters);
 
   return (
     <>
