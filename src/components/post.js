@@ -22,6 +22,11 @@ const Post = ({ photo, title, description, username_str, post_report_id}) => {
     }
     
   }
+
+  const payment = async () => {
+    console.log(post_report_id)
+  }
+
   return (
     <div className="card mb-3 m-2" style={{ width: "674px", height: "max-content" }}>
       <div className="row g-0">
@@ -42,7 +47,13 @@ const Post = ({ photo, title, description, username_str, post_report_id}) => {
               <img src={"https://icon-library.com/images/arrow-up-icon-png/arrow-up-icon-png-0.jpg"} className="img-fluid" alt="UpVote icon" />
             </div>
             <div className='col'>
-              <img src={"https://cdn-icons-png.flaticon.com/512/21/21004.png"} className="img-fluid" alt="Donar icon" />
+              <img 
+              id="donate" 
+              src={"https://cdn-icons-png.flaticon.com/512/21/21004.png"} 
+              className="img-fluid" 
+              alt="Donar icon"
+              onClick={payment}
+              />
             </div>
             <div className='col'>
               <img src={"https://cdn0.iconfinder.com/data/icons/multimedia-261/32/Send-512.png"} className="img-fluid" alt="Share icon" />

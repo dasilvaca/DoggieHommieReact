@@ -15,12 +15,13 @@ const Posts = ({ posts }) => {
               title={post.title}
               username_str={post.userData.user.first_name + " " + post.userData.user.last_name}
               post_report_id = {post.id}
+              key={post.id}
             />
           ))
 
         ) : (
-          <div class="spinner-border" role="status" style={{margin: "20%"}}>
-            <span class="sr-only">Loading...</span>
+          <div className="spinner-border" role="status" style={{margin: "20%"}}>
+            <span className="sr-only">Loading...</span>
           </div>
           // TODO: Add a loading animation
         )}
