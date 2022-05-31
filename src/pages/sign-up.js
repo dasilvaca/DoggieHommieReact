@@ -15,7 +15,7 @@ const SignUp = () => {
     // else {
       delete state.user.password_confirmation;
       var x =  axios.post('http://localhost:8000/users', state).then((response) =>{
-        console.log("kk", x)
+        console.log(x)
         if(x.status === 201){
           window.location.href("/login")
         }else{
