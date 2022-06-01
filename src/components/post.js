@@ -1,16 +1,25 @@
-import { textAlign } from '@mui/system'
-import React from 'react';
-import axios from 'axios';
-import { Modal } from 'bootstrap';
+import { textAlign } from "@mui/system";
+import React from "react";
+import axios from "axios";
+import { Modal } from "bootstrap";
 
-import PostButtons from './PostButtons';
+import PostButtons from "./PostButtons";
 
-
-const Post = ({ photo, title, description, username_str, post_config_id, user_post_id }) => {
+const Post = ({
+  photo,
+  title,
+  description,
+  username_str,
+  post_config_id,
+  user_post_id,
+}) => {
   const report = async () => {
     console.log(post_config_id);
     var x = await axios.patch(
-      "http://127.0.0.1:8000/post/RUD/" + String(post_config_id)
+      "http://127.0.0.1:8000/post/RUD/" + String(post_config_id),
+      {
+        action: "report",
+      }
     );
     console.log(x.status);
     if (x.status === 200) {
@@ -23,29 +32,24 @@ const Post = ({ photo, title, description, username_str, post_config_id, user_po
   };
 
   const upvote = async () => {
-
     var upRequest = await axios.patch(
       "http://127.0.0.1:8000/post/RUD/" + String(post_config_id),
       {
-        userID : localStorage.getItem("user"),
-        upvote: true,
+        userID: localStorage.getItem("user"),
+        action: "upvote",
       }
     );
     console.log(upRequest.status);
     if (upRequest.status === 200) {
-      console.log(upRequest.data)
+      console.log(upRequest.data);
       window.alert(upRequest.data.mensaje);
       window.location.href = "/";
     }
   };
 
-  
-  
-
   const payment = async () => {
-    console.log(post_report_id)
-
-  }
+    console.log(post_report_id);
+  };
 
   return (
     <div
@@ -72,14 +76,13 @@ const Post = ({ photo, title, description, username_str, post_config_id, user_po
               <strong> {username_str}</strong>{" "}
             </p>
           </div>
-          <PostButtons 
-            post_config_id={post_config_id} 
-            title={title} 
-            description={description} 
-            username_str={username_str} 
+          <PostButtons
+            post_config_id={post_config_id}
+            title={title}
+            description={description}
+            username_str={username_str}
             user_post_id={user_post_id}
           />
-
         </div>
         <div className="col-md-8">
           <div className="card-body">
@@ -103,7 +106,6 @@ const Post = ({ photo, title, description, username_str, post_config_id, user_po
       </div>
     </div>
   );
-        
 };
 
 export default Post;
