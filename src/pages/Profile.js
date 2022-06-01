@@ -79,9 +79,9 @@ export const Profile = () => {
                   </Link>
                 </a></li>
 
-                {/* <li><a className="dropdown-item" href="#" onClick={signOut}> 
+                <li><a className="dropdown-item" href="#" onClick={signOut}> 
                     Cerrar sesion
-                </a></li> */}
+                </a></li>
             </ul>
         </div> 
             <Posts posts={characters}/>
