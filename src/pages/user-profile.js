@@ -50,8 +50,8 @@ export const UserProfile = () => {
                 <div style={{display: "inline-block", maxWidth: "16em", paddingLeft: "5px", textAlign: "left", margin: "auto",paddingTop: "18px"}}>
                     <h3 style={{display: "block", maxWidth: "15em", wordWrap: "break-word", margin: "0"}}>
                         {name}</h3>
-                    <a href="/" onClick={signOut} style={{display: "block", textAlign: "left", color: "#504E4E"}}>Cerrar sesión</a>
-                </div>
+{/*                     <a href="/" onClick={signOut} style={{display: "block", textAlign: "left", color: "#504E4E"}}>Cerrar sesión</a>
+ */}                </div>
             </div>
         </div>
             <Posts posts={characters}/>

@@ -60,15 +60,33 @@ export const Profile = () => {
                           {tel}</h6>
                           <h6 style={{display: "block", maxWidth: "15em", wordWrap: "break-word", margin: "0"}}>
                           {isActive}</h6>
-                  <a href="/" onClick={signOut} style={{display: "block", textAlign: "left", color: "#504E4E"}}>Cerrar sesión</a>
+                  {/* <a href="/" onClick={signOut} style={{display: "block", textAlign: "left", color: "#504E4E"}}>Cerrar sesión</a> */}
                 </div>
 
             </div>
         </div>
 
-            <Link to="/updateUser">
-              <button type="button" class="btn btn-primary" style={{marginLeft :"12%", backgroundColor : "#37384F", borderColor : "#37384F", marginTop:"1%", marginBottom:"3%"}}>Editar perfil</button>
-            </Link>
+              <div className="dropdown">
+            <a className="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" style={{marginLeft :"12%", backgroundColor : "#37384F", borderColor : "#37384F", marginTop:"1%", marginBottom:"3%"}}>
+                Opciones
+            </a>
+
+            <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                {/* <li><a className="dropdown-item" href="#">
+                  Informacion Usuario
+                </a></li> */}
+
+                {/* <li><a className="dropdown-item" href="/updateUser" >
+                  <Link to="/updateUser" style={{textDecoration : "none", color : "#24272A"}}>        
+                    Editar Perfil
+                  </Link>
+                </a></li> */}
+
+                {/* <li><a className="dropdown-item" href="#" onClick={signOut}> 
+                    Cerrar sesion
+                </a></li> */}
+            </ul>
+        </div> 
             <Posts posts={characters}/>
           </div>
         </div>
