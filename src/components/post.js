@@ -6,7 +6,7 @@ import { Modal } from 'bootstrap';
 import PostButtons from './PostButtons';
 
 
-const Post = ({ photo, title, description, username_str, post_config_id }) => {
+const Post = ({ photo, title, description, username_str, post_config_id, user_post_id }) => {
   const report = async () => {
     console.log(post_config_id);
     var x = await axios.patch(
@@ -72,7 +72,13 @@ const Post = ({ photo, title, description, username_str, post_config_id }) => {
               <strong> {username_str}</strong>{" "}
             </p>
           </div>
-          <PostButtons post_config_id={post_config_id}/>
+          <PostButtons 
+            post_config_id={post_config_id} 
+            title={title} 
+            description={description} 
+            username_str={username_str} 
+            user_post_id={user_post_id}
+          />
 
         </div>
         <div className="col-md-8">
