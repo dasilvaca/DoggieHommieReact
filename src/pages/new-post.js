@@ -30,10 +30,11 @@ const NewPost = () => {
                 state: null,
                 number_banned: null,
                 user: parseInt(localStorage.getItem("user")),
-                images: []
+                images: ''
                 },
                 bankAccounts: []
             }))
+    const [selectedFile, setSelectedFile] = useState(null)
 
     const handleSubmit = async (event) => {
         event.preventDefault()
@@ -50,6 +51,59 @@ const NewPost = () => {
     }
 
     const [receiveDonations, toggleDonations] = useState(() => (false))
+
+    const onFileChange = event => {
+    
+        setPost({ ...post_req, post: { ...post_req.post, images:"hola"}})
+        console.log(post_req.post.images)
+        console.log(event.target.files[0])
+      
+      };
+
+    // On file upload (click the upload button)
+    const onFileUpload = () => {
+    
+        // Create an object of formData
+        const formData = new FormData();
+      
+        // Update the formData object
+        formData.append(
+          "myFile",
+          post_req.post.images,
+          post_req.post.images.name
+        );
+    }
+
+    const fileData = () => {
+    
+        if (post_req.post.images) {
+           
+          return (
+            <div>
+              <h2>File Details:</h2>
+               
+  <p>File Name: {post_req.post.images.name}</p>
+   
+               
+  <p>File Type: {post_req.post.images.type}</p>
+   
+               
+  <p>
+                Last Modified:{" "}
+                {post_req.post.images.lastModifiedDate.toDateString()}
+              </p>
+   
+            </div>
+          );
+        } else {
+          return (
+            <div>
+              <br />
+              <h4>Choose before Pressing the Upload button</h4>
+            </div>
+          );
+        }
+      };
 
     return (
         <>
@@ -86,16 +140,23 @@ const NewPost = () => {
                                         onChange={(e) => setPost({ ...post_req, post: { ...post_req.post, description: e.target.value } })}
                                     />
 
-                                    <label form="post-foto" className="form-label mb-1">Añade una foto</label>
+                                    <label form="file" className="form-label mb-1">Añade una foto</label>
                                     <input
                                         type="file"
-                                        accept='image/*'
+                                        //accept='image/*'
                                         className="form-control mb-3"
                                         id="post-foto"
                                         aria-describedby="dni_help"
                                         name="post-foto"
-                                    // onChange={(e) => setstate({ ...state, username: e.target.value })}
+                                        onChange={(e) => {setSelectedFile(e.target.files[0])
+                                        console.log("ñññ"+selectedFile.name)}
+                                    
+                                    }
                                     />
+                                    <button onClick={(e)=>{onFileUpload()}}>    
+                                    Upload!
+                                    </button>
+                                    {fileData()}
                                     <div className="form-check">
                                         <input
                                             className="form-check-input"
