@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import Posts from '../components/posts';
 
-export const Profile = () => {
+export const UserProfile = () => {
   const signOut = () => {
     localStorage.removeItem("username");
     localStorage.removeItem("token");
@@ -17,8 +17,9 @@ export const Profile = () => {
 
   const [characters, setCharacters] = useState([]);
 
-  const user = +localStorage.getItem("user")
-  const name = localStorage.getItem("username")
+  
+  const user = localStorage.getItem("user_profile")
+  const name = localStorage.getItem("user_profile_name")
 
   const getCharacters = async () => {
     console.log("Usuario: ", user);
@@ -27,6 +28,9 @@ export const Profile = () => {
     );
     console.log(data)
     setCharacters(data.results);
+    localStorage.removeItem("user_profile");
+    localStorage.removeItem("user_profile_name");
+
   };
 
   useEffect(() => {
@@ -53,10 +57,6 @@ export const Profile = () => {
                 </div>
             </div>
         </div>
-
-            <Link to="/updateUser">
-              <button type="button" class="btn btn-primary" style={{marginLeft :"12%", backgroundColor : "#37384F", borderColor : "#37384F", marginTop:"1%", marginBottom:"3%"}}>Editar perfil</button>
-            </Link>
             <Posts posts={characters}/>
           </div>
         </div>

@@ -33,18 +33,6 @@ const PostButtons = ({ title, description, username_str, post_config_id, user_po
                     {/* <p style={{position: "absolute", margin : '0px 0px 0px 0px', background : "#FF5733", borderRadius : "25px"}}>{upvotes}</p> */}
                     <span className="visually-hidden">Button</span>
                 </button>
-                <p style={{
-                        position: "absolute",
-                        margin : '0px 0px 0px 28px',
-                        zIndex : "900",
-                        padding : "0px",
-                        background : "#FFFF",
-                        borderRadius : "20px",
-                        borderStyle : "solid",
-                        color : "#FF5783"
-                    }}>
-                        {upvotes}
-                    </p>
                 <button type="button" className="btn btn-outline-secondary" style={{ padding: "5px" }} data-bs-toggle="modal" data-bs-target={"#exampleModal" + post_config_id}>
                     <svg xmlns="http://www.w3.org/2000/svg" style={{ margin: "0", width: "25px", height: "25px", position: 'initial', padding: "0", paddingBottom: "3px" }} fill="currentColor" className="bi bi-cash" viewBox="0 0 16 16">
                         <path d="M8 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"></path>

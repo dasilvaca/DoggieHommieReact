@@ -12,7 +12,8 @@ const Post = ({
   username_str,
   post_config_id,
   user_post_id,
-  upvotes
+  upvotes,
+  date
 }) => {
   const report = async () => {
     console.log(post_config_id);
@@ -33,16 +34,16 @@ const Post = ({
   };
 
   const reportUser = async () => {
-    console.log(post_config_id);
+    console.log(Post);
     var x = await axios.patch(
-      "http://127.0.0.1:8000/post/RUD/" + String(post_config_id),
+      "http://127.0.0.1:8000/user/report/" + String(user_post_id),
       {
         action: "report",
       }
     );
     console.log(x.status);
     if (x.status === 200) {
-      window.alert("El post ha sido reportado");
+      window.alert("El usuario ha sido reportado");
       window.location.href = "/";
     } else {
       window.alert("Error. Verifica los datos");
@@ -70,6 +71,16 @@ const Post = ({
     console.log(post_report_id);
   };
 
+  const user = async () => {
+      localStorage.setItem("user_profile", user_post_id),
+      localStorage.setItem("user_profile_name", username_str),
+      redirect()     
+  };
+
+  const redirect = () => {
+    window.location.href = '/user-profile'
+  }
+
   return (
     <div
       className="card mb-3 m-2"
@@ -78,19 +89,28 @@ const Post = ({
       <div className="row g-0">
         <div className="col-md-2 col-rows-2">
           <div className="row">
-          <span title='Reportar Usuario'>
+          <span 
+          title='Reportar Usuario'
+          style={{
+            width: "40%",
+            height: "40%",
+            marginTop: "10px"
+          }}
+          >
               <img
-                id="ReportUser"
-                src={"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Antu_dialog-warning.svg/2048px-Antu_dialog-warning.svg.png"}
-                className="img-fluid"
-                alt="report icon"
-                style={{
-                  width: "2rem",
-                  position : "fixed",
-                  marginTop : "12px"
-                }}
-                onClick = {reportUser}
-              />
+              id="ReportUser"
+              src={"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Antu_dialog-warning.svg/2048px-Antu_dialog-warning.svg.png"}
+              className="img-fluid"
+              alt="report icon"
+              style={{
+                width: "100%",
+                height: "100%",
+                position : "5px",
+                marginTop : "2px"
+              }}
+              onClick = {reportUser}
+              
+            />
           </span>
             <img
               src={photo}
@@ -102,12 +122,12 @@ const Post = ({
                 borderRadius: "50%",
                 backgroundSize: "100% auto",
                 height: "100px",
-                margin: "10px",
+                margin: "5px",
               }}
             />
-            <p style={{ textAlign: "center", color: "#4A9FCD" }}>
+           <button class = "btn info" style={{ textAlign: "center", color: "#4A9FCD" }} onClick={user}>
               <strong> {username_str}</strong>{" "}
-            </p>
+            </button>
           </div>
           <PostButtons
             post_config_id={post_config_id}
@@ -120,8 +140,38 @@ const Post = ({
         </div>
         <div className="col-md-8">
           <div className="card-body">
-            <h5 className="card-title">{title}</h5>
+            <h4 className="card-title">{title}</h4>
+            <h6 className="card-text">{date}</h6>
             <p className="card-text">{description}</p>
+            <div class="container">
+              <div class="row">
+                <div class="col-1" style= {{
+                    marginLeft: "0px",
+                    marginTop: "0px",
+                    padding: "0%",
+                    }}>
+                  <img
+                  id="up"
+                  src={"https://www.actoterapeutico.com.ar/ebook/imagenes/top.png"}
+                  className="img-fluid"
+                  style={{
+                    width: "1.5rem",
+                    height: "1.5rem",
+                    marginLeft: "25%",
+                    marginTop: "0px",
+                  }}
+                  />
+                </div>
+                <div class="col-1"style= {{
+                    marginLeft: "0.5%",
+                    marginTop: "0.5%",
+                    padding: "0%"
+                    }}>
+                  {upvotes}
+                </div>
+              </div>
+            </div>
+            
           </div>
         </div>
         <img
@@ -137,7 +187,11 @@ const Post = ({
           }}
           onClick={report}
         />
+        
+        
+        
       </div>
+      
     </div>
   );
 };
