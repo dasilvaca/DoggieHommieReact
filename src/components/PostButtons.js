@@ -12,7 +12,7 @@ const PostButtons = ({ title, description, username_str, post_config_id, user_po
             "http://127.0.0.1:8000/post/RUD/" + String(post_config_id),
             {
                 userID: localStorage.getItem("user"),
-                upvote: true,
+                action: "upvote",
             }
         );
         console.log(upRequest.status);

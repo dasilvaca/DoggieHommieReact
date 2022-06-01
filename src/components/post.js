@@ -1,16 +1,26 @@
-import { textAlign } from '@mui/system'
-import React from 'react';
-import axios from 'axios';
-import { Modal } from 'bootstrap';
+import { textAlign } from "@mui/system";
+import React from "react";
+import axios from "axios";
+import { Modal } from "bootstrap";
 
-import PostButtons from './PostButtons';
+import PostButtons from "./PostButtons";
 
-
-const Post = ({ photo, title, description, username_str, post_config_id, user_post_id, upvotes}) => {
-  const reportPost = async () => {
+const Post = ({
+  photo,
+  title,
+  description,
+  username_str,
+  post_config_id,
+  user_post_id,
+  upvotes
+}) => {
+  const report = async () => {
     console.log(post_config_id);
     var x = await axios.patch(
-      "http://127.0.0.1:8000/post/RUD/" + String(post_config_id)
+      "http://127.0.0.1:8000/post/RUD/" + String(post_config_id),
+      {
+        action: "report",
+      }
     );
     console.log(x.status);
     if (x.status === 200) {
@@ -25,7 +35,10 @@ const Post = ({ photo, title, description, username_str, post_config_id, user_po
   const reportUser = async () => {
     console.log(post_config_id);
     var x = await axios.patch(
-      "http://127.0.0.1:8000/post/RUD/" + String(post_config_id)
+      "http://127.0.0.1:8000/post/RUD/" + String(post_config_id),
+      {
+        action: "report",
+      }
     );
     console.log(x.status);
     if (x.status === 200) {
@@ -38,42 +51,34 @@ const Post = ({ photo, title, description, username_str, post_config_id, user_po
   };
 
   const upvote = async () => {
-
     var upRequest = await axios.patch(
       "http://127.0.0.1:8000/post/RUD/" + String(post_config_id),
       {
-        userID : localStorage.getItem("user"),
-        upvote: true,
+        userID: localStorage.getItem("user"),
+        action: "upvote",
       }
     );
     console.log(upRequest.status);
     if (upRequest.status === 200) {
-      console.log(upRequest.data)
+      console.log(upRequest.data);
       window.alert(upRequest.data.mensaje);
       window.location.href = "/";
     }
   };
 
-  
-  
-
   const payment = async () => {
-    console.log(post_report_id)
-
-  }
+    console.log(post_report_id);
+  };
 
   return (
     <div
-
       className="card mb-3 m-2"
       style={{ width: "674px", height: "max-content" }}
     >
-
       <div className="row g-0">
         <div className="col-md-2 col-rows-2">
           <div className="row">
-            {/* <p style={{position : "relative"}}>Hola mundo</p> */}
-            <span title='Reportar Usuario'>
+          <span title='Reportar Usuario'>
               <img
                 id="ReportUser"
                 src={"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Antu_dialog-warning.svg/2048px-Antu_dialog-warning.svg.png"}
@@ -86,8 +91,7 @@ const Post = ({ photo, title, description, username_str, post_config_id, user_po
                 }}
                 onClick = {reportUser}
               />
-            </span>
-
+          </span>
             <img
               src={photo}
               className="img-fluid"
@@ -106,14 +110,13 @@ const Post = ({ photo, title, description, username_str, post_config_id, user_po
             </p>
           </div>
           <PostButtons
-            post_config_id={post_config_id} 
-            title={title} 
-            description={description} 
-            username_str={username_str} 
+            post_config_id={post_config_id}
+            title={title}
+            description={description}
+            username_str={username_str}
             user_post_id={user_post_id}
             upvotes = {upvotes}
           />
-
         </div>
         <div className="col-md-8">
           <div className="card-body">
@@ -132,13 +135,11 @@ const Post = ({ photo, title, description, username_str, post_config_id, user_po
             marginLeft: "30px",
             marginTop: "20px",
           }}
-          onClick={reportPost}
+          onClick={report}
         />
       </div>
-
     </div>
   );
-        
 };
 
 export default Post;
