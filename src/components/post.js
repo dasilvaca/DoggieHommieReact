@@ -6,8 +6,23 @@ import { Modal } from 'bootstrap';
 import PostButtons from './PostButtons';
 
 
-const Post = ({ photo, title, description, username_str, post_config_id, user_post_id }) => {
-  const report = async () => {
+const Post = ({ photo, title, description, username_str, post_config_id, user_post_id, upvotes}) => {
+  const reportPost = async () => {
+    console.log(post_config_id);
+    var x = await axios.patch(
+      "http://127.0.0.1:8000/post/RUD/" + String(post_config_id)
+    );
+    console.log(x.status);
+    if (x.status === 200) {
+      window.alert("El post ha sido reportado");
+      window.location.href = "/";
+    } else {
+      window.alert("Error. Verifica los datos");
+    }
+    const [showPayment, setShowPayment] = useState(false);
+  };
+
+  const reportUser = async () => {
     console.log(post_config_id);
     var x = await axios.patch(
       "http://127.0.0.1:8000/post/RUD/" + String(post_config_id)
@@ -49,12 +64,30 @@ const Post = ({ photo, title, description, username_str, post_config_id, user_po
 
   return (
     <div
+
       className="card mb-3 m-2"
       style={{ width: "674px", height: "max-content" }}
     >
+
       <div className="row g-0">
         <div className="col-md-2 col-rows-2">
           <div className="row">
+            {/* <p style={{position : "relative"}}>Hola mundo</p> */}
+            <span title='Reportar Usuario'>
+              <img
+                id="ReportUser"
+                src={"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Antu_dialog-warning.svg/2048px-Antu_dialog-warning.svg.png"}
+                className="img-fluid"
+                alt="report icon"
+                style={{
+                  width: "2rem",
+                  position : "fixed",
+                  marginTop : "12px"
+                }}
+                onClick = {reportUser}
+              />
+            </span>
+
             <img
               src={photo}
               className="img-fluid"
@@ -72,12 +105,13 @@ const Post = ({ photo, title, description, username_str, post_config_id, user_po
               <strong> {username_str}</strong>{" "}
             </p>
           </div>
-          <PostButtons 
+          <PostButtons
             post_config_id={post_config_id} 
             title={title} 
             description={description} 
             username_str={username_str} 
             user_post_id={user_post_id}
+            upvotes = {upvotes}
           />
 
         </div>
@@ -98,9 +132,10 @@ const Post = ({ photo, title, description, username_str, post_config_id, user_po
             marginLeft: "30px",
             marginTop: "20px",
           }}
-          onClick={report}
+          onClick={reportPost}
         />
       </div>
+
     </div>
   );
         

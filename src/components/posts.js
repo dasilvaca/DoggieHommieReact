@@ -16,6 +16,7 @@ const Posts = ({ posts }) => {
               username_str={post.userData.user.first_name + " " + post.userData.user.last_name}
               post_config_id = {post.id}
               user_post_id = {post.userData.user.id}
+              upvotes = {post.grade}
               // post_report_id = {post.id}
               key={post.id}
             />
