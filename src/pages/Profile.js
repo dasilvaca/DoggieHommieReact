@@ -73,11 +73,11 @@ export const Profile = () => {
 
             <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
 
-                {/* <li><a className="dropdown-item" href="/updateUser" >
+                <li><a className="dropdown-item" href="/updateUser" >
                   <Link to="/updateUser" style={{textDecoration : "none", color : "#24272A"}}>        
                     Editar Perfil
                   </Link>
-                </a></li> */}
+                </a></li>
 
                 {/* <li><a className="dropdown-item" href="#" onClick={signOut}> 
                     Cerrar sesion
