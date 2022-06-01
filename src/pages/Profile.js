@@ -26,7 +26,7 @@ export const Profile = () => {
     `http://127.0.0.1:8000/post/getByUser/${user}`
     );
     console.log(data)
-    setCharacters(data);
+    setCharacters(data.results);
   };
 
   useEffect(() => {

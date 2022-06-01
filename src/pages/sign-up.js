@@ -19,7 +19,7 @@ const SignUp = () => {
         if(x.status === 201){
           window.location.href("/login")
         }else{
-          alert('hhorr')
+          alert('')
         }
       })
       console.log('data', x)
