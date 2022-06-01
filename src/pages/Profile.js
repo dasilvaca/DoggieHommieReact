@@ -72,9 +72,6 @@ export const Profile = () => {
             </a>
 
             <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                {/* <li><a className="dropdown-item" href="#">
-                  Informacion Usuario
-                </a></li> */}
 
                 {/* <li><a className="dropdown-item" href="/updateUser" >
                   <Link to="/updateUser" style={{textDecoration : "none", color : "#24272A"}}>        
