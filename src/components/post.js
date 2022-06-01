@@ -4,6 +4,7 @@ import axios from "axios";
 import { Modal } from "bootstrap";
 
 import PostButtons from "./PostButtons";
+import { useState } from "react";
 
 const Post = ({
   photo,
@@ -15,6 +16,43 @@ const Post = ({
   upvotes,
   date
 }) => {
+  
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+
+      delete state.user.password_confirmation;
+      var x =  axios.post('http://localhost:8000/users', state).then((response) =>{
+        console.log(x)
+        if(x.status === 201){
+          window.location.href("/login")
+        }else{
+          alert('')
+        }
+      })
+      console.log('data', x)
+      console.log('data', state)
+      
+  //}
+
+  }
+  const [state, setstate] = useState(() => (
+    {
+      user: {
+        first_name: null,
+        last_name: "",
+        username: null, //email
+        password: null,
+        password_confirmation: null
+      },
+      telefono: null,
+      numero_documento: null,
+      pais: null,
+      ciudad: null
+    }
+
+  ));
+
+
   const report = async () => {
     console.log(post_config_id);
     var x = await axios.patch(
@@ -187,9 +225,33 @@ const Post = ({
           }}
           onClick={report}
         />
-        
-        
-        
+        <hr></hr>
+
+        {/*Commment form*/}
+
+        <form onSubmit={handleSubmit}>
+              <div className="form-group text-start" >
+                <div className='row row-cols-2'>
+                  <div className='col-11'>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="input_comment"
+                      placeholder="Añade un comentario"
+                      name="comentario"
+                      onChange={(e) => { setstate({ ...state, user: { ...state.user, first_name: e.target.value } }) }}
+                    />
+                    
+                  </div>
+                  <div className="col-1" >
+                    <button type="submit" class="btn btn-primary mb-3 ">></button>
+                  </div>
+                </div>
+              </div>
+            </form>
+
+        {/*Commment end form*/}
+          
       </div>
       
     </div>
