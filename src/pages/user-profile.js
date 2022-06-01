@@ -28,9 +28,6 @@ export const UserProfile = () => {
     );
     console.log(data)
     setCharacters(data.results);
-    localStorage.removeItem("user_profile");
-    localStorage.removeItem("user_profile_name");
-
   };
 
   useEffect(() => {
@@ -50,10 +47,10 @@ export const UserProfile = () => {
             <div style={{display: "inline-block" , marginLeft: "12%",marginTop : "4%"}} >
                 <img alt="" className="rounded-circle" src=""
                      style={{maxHeight: "100px", maxWidth: "100px", width: "100%", float: "left", clear: "both", display: "inline"}}/>
-                <div style={{display: "inline-block", maxWidth: "16em", paddingLeft: "5px", textAlign: "center", margin: "auto",paddingTop: "18px"}}>
+                <div style={{display: "inline-block", maxWidth: "16em", paddingLeft: "5px", textAlign: "left", margin: "auto",paddingTop: "18px"}}>
                     <h3 style={{display: "block", maxWidth: "15em", wordWrap: "break-word", margin: "0"}}>
                         {name}</h3>
-                    <a href="/" onClick={signOut} style={{display: "block", textAlign: "center", color: "#504E4E"}}>Cerrar sesión</a>
+                    <a href="/" onClick={signOut} style={{display: "block", textAlign: "left", color: "#504E4E"}}>Cerrar sesión</a>
                 </div>
             </div>
         </div>

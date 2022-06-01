@@ -25,6 +25,14 @@ const LogIn = () => {
       // console.log(localStorage.getItem('user'), x.data.data.idUser)
       localStorage.setItem('user', x.data.idUser)
       localStorage.setItem('username', x.data.nombreUser)
+      localStorage.setItem('user_tel',x.data.telefono)
+      localStorage.setItem('user_email',x.data.email)
+      if(x.data.active ===true){
+        localStorage.setItem('user_active',"Activo")
+      }else{
+        localStorage.setItem('user_active',"Bloqueado")
+      }
+      
       window.location.href = '/'
 
     }
