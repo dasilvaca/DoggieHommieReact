@@ -54,8 +54,6 @@ const Post = ({
     }
 
   ));
-
-
   const report = async () => {
     console.log(post_config_id);
     var x = await axios.patch(
@@ -92,6 +90,7 @@ const Post = ({
     const [showPayment, setShowPayment] = useState(false);
   };
 
+
   const upvote = async () => {
     var upRequest = await axios.patch(
       "http://127.0.0.1:8000/post/RUD/" + String(post_config_id),
@@ -125,6 +124,23 @@ const Post = ({
     window.location.href = '/user-profile'
   }
 
+  const comment = async () => {
+    console.log(Post);
+    var x = await axios.post(
+      "http://127.0.0.1:8000/comment/create",
+      {
+        action: "comment",
+      }
+    );
+    console.log(x.status);
+    if (x.status === 200) {
+      window.alert("Tu comentario ha sido registrado");
+      window.location.href = "/";
+    } else {
+      window.alert("Error. Verifica los datos");
+    }
+    const [showPayment, setShowPayment] = useState(false);
+  };
   return (
     <div
       className="card mb-3 m-2"

@@ -20,8 +20,8 @@ const Posts = ({ posts }) => {
               date = {post.date}
               // post_report_id = {post.id}
               key={post.id}
-              is_active = {post.userData.is_active}
-              email={post.userData.username}
+              is_active = {post.userData.user.is_active}
+              email={post.userData.user.username}
               tel =  {post.userData.telefono}
             />
           ))

@@ -16,7 +16,7 @@ const LogIn = () => {
     event.preventDefault()
     // console.log('estado', state)
     console.log(backend_host + '/login')
-    var x = await axios.post('http://localhost:8000' + '/login', state)//, fetch)
+    var x = await axios.post('http://localhost:8000' + '/login', state)
     console.log('data', x.user)
 
     if (x.status === 200) {
@@ -37,7 +37,8 @@ const LogIn = () => {
 
     }
     else {
-      alert('Usuario o contraseña incorrectos')
+      console.log(x.status);
+      window.alert(x.detail);
     }
 
   }
