@@ -29,7 +29,9 @@ const Posts = ({ posts }) => {
         ) : (
           <div className="spinner-border" role="status" style={{margin: "20%"}}>
             <span className="sr-only">Loading...</span>
+            
           </div>
+          
           // TODO: Add a loading animation
         )}
       </div>

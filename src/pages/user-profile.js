@@ -62,8 +62,8 @@ export const UserProfile = () => {
                           {tel}</h6>
                           <h6 style={{display: "block", maxWidth: "15em", wordWrap: "break-word", margin: "0"}}>
                           {isActive}</h6>
-                  <a href="/" onClick={signOut} style={{display: "block", textAlign: "left", color: "#504E4E"}}>Cerrar sesión</a>
-                </div>
+{/*                     <a href="/" onClick={signOut} style={{display: "block", textAlign: "left", color: "#504E4E"}}>Cerrar sesión</a>
+ */}                </div>
             </div>
         </div>
             <Posts posts={characters}/>
