@@ -13,7 +13,10 @@ const Post = ({
   post_config_id,
   user_post_id,
   upvotes,
-  date
+  date,
+  is_active,
+  tel,
+  email
 }) => {
   const report = async () => {
     console.log(post_config_id);
@@ -74,6 +77,9 @@ const Post = ({
   const user = async () => {
       localStorage.setItem("user_profile", user_post_id),
       localStorage.setItem("user_profile_name", username_str),
+      localStorage.setItem("user_is_active", is_active),
+      localStorage.setItem("user_tel", tel),
+      localStorage.setItem("user_email", email),
       redirect()     
   };
 

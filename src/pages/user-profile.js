@@ -20,6 +20,9 @@ export const UserProfile = () => {
   
   const user = localStorage.getItem("user_profile")
   const name = localStorage.getItem("user_profile_name")
+  const tel = localStorage.getItem("user_tel")
+  const email = localStorage.getItem("user_email")
+  const isActive = localStorage.getItem("user_is_active")
 
   const getCharacters = async () => {
     console.log("Usuario: ", user);
@@ -51,6 +54,15 @@ export const UserProfile = () => {
                     <h3 style={{display: "block", maxWidth: "15em", wordWrap: "break-word", margin: "0"}}>
                         {name}</h3>
                     <a href="/" onClick={signOut} style={{display: "block", textAlign: "left", color: "#504E4E"}}>Cerrar sesión</a>
+                </div>
+                <div style={{maxWidth: "16em", paddingLeft: "5px", textAlign: "left", margin: "auto",paddingTop: "10px"}}>
+                  <h6 style={{display: "block", maxWidth: "15em", wordWrap: "break-word", margin: "0"}}>
+                          {email}</h6>
+                          <h6 style={{display: "block", maxWidth: "15em", wordWrap: "break-word", margin: "0"}}>
+                          {tel}</h6>
+                          <h6 style={{display: "block", maxWidth: "15em", wordWrap: "break-word", margin: "0"}}>
+                          {isActive}</h6>
+                  <a href="/" onClick={signOut} style={{display: "block", textAlign: "left", color: "#504E4E"}}>Cerrar sesión</a>
                 </div>
             </div>
         </div>
