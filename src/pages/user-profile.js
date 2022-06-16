@@ -22,7 +22,13 @@ export const UserProfile = () => {
   const name = localStorage.getItem("user_profile_name")
   const tel = localStorage.getItem("user_tel")
   const email = localStorage.getItem("user_email")
-  const isActive = localStorage.getItem("user_is_active")
+  var isActive = ""
+  if (localStorage.getItem("user_active")) {
+      isActive = "Activo"    
+  } else {
+     isActive = "Inactivo"
+    
+  }
 
   const getCharacters = async () => {
     console.log("Usuario: ", user);

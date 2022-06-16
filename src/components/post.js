@@ -5,6 +5,7 @@ import { Modal } from "bootstrap";
 
 import PostButtons from "./PostButtons";
 import { useState } from "react";
+import { colors } from "@mui/material";
 
 const Post = ({
   photo,
@@ -17,7 +18,9 @@ const Post = ({
   date,
   is_active,
   tel,
-  email
+  email, 
+  image,
+  comments
 }) => {
   
   const handleSubmit = async (event) => {
@@ -50,10 +53,19 @@ const Post = ({
       telefono: null,
       numero_documento: null,
       pais: null,
-      ciudad: null
+      ciudad: null,
     }
 
   ));
+
+  const [comm, setComm] = useState(() => (
+    {
+        text:'',
+        date:null,
+        post:null,
+        user: localStorage.getItem('user'),
+    }))
+
   const report = async () => {
     console.log(post_config_id);
     var x = await axios.patch(
@@ -69,7 +81,6 @@ const Post = ({
     } else {
       window.alert("Error. Verifica los datos");
     }
-    const [showPayment, setShowPayment] = useState(false);
   };
 
   const reportUser = async () => {
@@ -87,7 +98,6 @@ const Post = ({
     } else {
       window.alert("Error. Verifica los datos");
     }
-    const [showPayment, setShowPayment] = useState(false);
   };
 
 
@@ -107,10 +117,6 @@ const Post = ({
     }
   };
 
-  const payment = async () => {
-    console.log(post_report_id);
-  };
-
   const user = async () => {
       localStorage.setItem("user_profile", user_post_id),
       localStorage.setItem("user_profile_name", username_str),
@@ -124,23 +130,24 @@ const Post = ({
     window.location.href = '/user-profile'
   }
 
-  const comment = async () => {
-    console.log(Post);
-    var x = await axios.post(
-      "http://127.0.0.1:8000/comment/create",
-      {
-        action: "comment",
-      }
-    );
-    console.log(x.status);
-    if (x.status === 200) {
+  const comment = async (event) => {
+
+    event.preventDefault()
+    var x = await axios.post("http://127.0.0.1:8000/comment/create",comm);
+    console.log("estado",x.status);
+    console.log("comment",comm);
+
+    if (x.status === 201) {
       window.alert("Tu comentario ha sido registrado");
       window.location.href = "/";
+
     } else {
+
       window.alert("Error. Verifica los datos");
+
     }
-    const [showPayment, setShowPayment] = useState(false);
   };
+
   return (
     <div
       className="card mb-3 m-2"
@@ -203,6 +210,15 @@ const Post = ({
             <h4 className="card-title">{title}</h4>
             <h6 className="card-text">{date}</h6>
             <p className="card-text">{description}</p>
+            <div>
+                {image===null || image==="" ? (
+                   <p> Nou</p>      
+                ) : (
+                  (image.split(',').map( img => (
+                    <img src={img} alt={img} key={img} width="80%"></img>
+                  )))     
+                )}
+            </div>
             <div class="container">
               <div class="row">
                 <div class="col-1" style= {{
@@ -247,28 +263,55 @@ const Post = ({
           }}
           onClick={report}
         />
-        <hr></hr>
-
+        
         {/*Commment form*/}
-
-        <form onSubmit={handleSubmit}>
-              <div className="form-group text-start" >
-                <div className='row row-cols-2'>
-                  <div className='col-11'>
+        <form onSubmit={comment} style= {{paddingBottom: "5%"}}>
+              <div className="form-group text-start">
+                <div className='row row-cols-2'
+                style={{
+                  padding: "10px"
+                }}>
+                  <div className='col-9'
+                  style={{
+                    marginBottom: "10px"
+                    
+                  }}>
                     <input
                       type="text"
                       className="form-control"
                       id="input_comment"
                       placeholder="Añade un comentario"
                       name="comentario"
-                      onChange={(e) => { setstate({ ...state, user: { ...state.user, first_name: e.target.value } }) }}
+                      onChange={(e) => { setComm({ ...comm, text:e.target.value, post: post_config_id})}}
                     />
-                    
                   </div>
                   <div className="col-1" >
-                    <button type="submit" class="btn btn-primary mb-3 "></button>
+                    <button class="btn btn-outline-primary" style={{ color: "#4A9FCD"}}>
+                      <strong> Comentar </strong>{" "}
+                    </button>
                   </div>
                 </div>
+                <div style={{ borderStyle: "solid", color: "#000000" ,borderWidth:"1px", borderRadius: "5px",padding: "2%", paddingLeft: "3%", margin: "0"}} >
+                  <strong><h3 class="mb-1" style={{color: "#4A9FCD" }}> Comentarios</h3></strong>     
+                  <ul  class="list-group">
+                  {comments===null || comments==="" ? (
+                    <h2 class="mb-1" > </h2>      
+                  ) : (
+                    (comments.map( comment => (
+                      <div class="list-group comment"style={{ borderStyle: "solid",  borderWidth:"3px" , borderRadius: "15px"}}>
+                        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                          <div class="d-flex w-100 justify-content-between">
+                            <h5><b class="mb-1" style={{color: "#4A9FCD"}}>{comment.userData.user.first_name}</b></h5>
+                            <small>{comment.date}</small>
+                          </div>
+                          <p class="mb-1">{comment.text}</p>
+                        </a>
+                      </div>
+                    ))   
+                  ))}
+                  </ul>
+                </div>
+               
               </div>
             </form>
 

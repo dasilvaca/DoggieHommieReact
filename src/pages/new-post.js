@@ -22,88 +22,59 @@ const NewPost = () => {
         {
             post:
             {
-                title: '', 
+                title: '',
                 description: '',
-                date: '', 
-                grade: 0, 
+                date: '',
+                grade: 0,
                 isDonation: false,
                 state: null,
                 number_banned: null,
                 user: parseInt(localStorage.getItem("user")),
-                images: ''
-                },
-                bankAccounts: []
-            }))
-    const [selectedFile, setSelectedFile] = useState(null)
+                images:[]
+            },
+            bankAccounts: []
+        }))
+
+    const [newImage, setNewImage] = useState(() => (
+        {
+            name: '',
+            data: ''
+        }
+
+    ));
 
     const handleSubmit = async (event) => {
         event.preventDefault()
+        
         var x = await axios.post('http://localhost:8000/post/', post_req)//, fetch)
 
-    
+
         if (x.status === 200) {
             window.alert("Post creado exitosamente")
             window.location.href = '/'
-          }else{
+        } else {
             window.alert("Error. Verifica los datos")
-          }
+        }
         console.log('data', x)
     }
 
     const [receiveDonations, toggleDonations] = useState(() => (false))
 
     const onFileChange = event => {
-    
-        setPost({ ...post_req, post: { ...post_req.post, images:"hola"}})
-        console.log(post_req.post.images)
-        console.log(event.target.files[0])
-      
-      };
-
-    // On file upload (click the upload button)
-    const onFileUpload = () => {
-    
-        // Create an object of formData
-        const formData = new FormData();
-      
-        // Update the formData object
-        formData.append(
-          "myFile",
-          post_req.post.images,
-          post_req.post.images.name
-        );
-    }
-
-    const fileData = () => {
-    
-        if (post_req.post.images) {
-           
-          return (
-            <div>
-              <h2>File Details:</h2>
-               
-  <p>File Name: {post_req.post.images.name}</p>
-   
-               
-  <p>File Type: {post_req.post.images.type}</p>
-   
-               
-  <p>
-                Last Modified:{" "}
-                {post_req.post.images.lastModifiedDate.toDateString()}
-              </p>
-   
-            </div>
-          );
-        } else {
-          return (
-            <div>
-              <br />
-              <h4>Choose before Pressing the Upload button</h4>
-            </div>
-          );
-        }
-      };
+        const preview = event.target.files[0]
+        const reader = new FileReader();
+        const filename = preview.name; 
+        reader.readAsDataURL(preview);
+        reader.onloadend = () => {
+            const data = reader.result.toString().split(',')[1];
+            setPost({ 
+                ...post_req, post: { 
+                    ...post_req.post, 
+                    images:  [...post_req.post.images, {name:filename, data: data}] 
+                } 
+            });
+        };     
+    };
 
     return (
         <>
@@ -139,6 +110,18 @@ const NewPost = () => {
                                         name="post-descripcion"
                                         onChange={(e) => setPost({ ...post_req, post: { ...post_req.post, description: e.target.value } })}
                                     />
+                                    <ul className="list-group">
+                                     {post_req.post.images!==null || post_req.post.images!=="" ? (
+                                                                                    
+                                        (post_req.post.images.map(image => (
+                                            <li className='list-group'  key={image.name}>{image.name}</li>
+                                        )))
+                                       
+                                        ) : (
+                                            <p>kk</p>
+                                        )
+                                    }
+                                     </ul>
 
                                     <label form="file" className="form-label mb-1">Añade una foto</label>
                                     <input
@@ -148,15 +131,8 @@ const NewPost = () => {
                                         id="post-foto"
                                         aria-describedby="dni_help"
                                         name="post-foto"
-                                        onChange={(e) => {setSelectedFile(e.target.files[0])
-                                        console.log("ñññ"+selectedFile.name)}
-                                    
-                                    }
+                                        onChange={(e) => onFileChange(e)}
                                     />
-                                    <button onClick={(e)=>{onFileUpload()}}>    
-                                    Upload!
-                                    </button>
-                                    {fileData()}
                                     <div className="form-check">
                                         <input
                                             className="form-check-input"
@@ -164,7 +140,7 @@ const NewPost = () => {
                                             value=""
                                             id="flexCheckDefault"
                                             // checked={receiveDonations}
-                                            onClick = {() => toggleDonations(!receiveDonations) && console.log(receiveDonations)}
+                                            onClick={() => toggleDonations(!receiveDonations) && console.log(receiveDonations)}
                                             onChange={(e) => setPost({ ...post_req, post: { ...post_req.post, isDonation: e.target.checked } })}
                                         />
 

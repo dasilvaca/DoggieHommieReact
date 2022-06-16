@@ -23,6 +23,8 @@ const Posts = ({ posts }) => {
               is_active = {post.userData.user.is_active}
               email={post.userData.user.username}
               tel =  {post.userData.telefono}
+              image = {post.images}
+              comments = {post.comments}
             />
           ))
 
