@@ -16,11 +16,11 @@ const CreatePost = () => {
                             </div>
                             <div className="col-11 col-rows-2">
                                 <div className="row justify-content-center">
-                                    <h3>Añadir publicacion</h3>
+                                    <h3>Añadir publicación</h3>
                                 </div>
                                 <div className="row">
                                 <Link to="/new-post" style={{textDecoration: "None"}}>
-                                    <input style={{}} type="text" className="form-control" placeholder="Ask for help" onClick={()=>{return true}} />
+                                    <input style={{}} type="text" className="form-control" placeholder="Ingresa los datos" onClick={()=>{return true}} />
                                 </Link>
                                 </div>
                             </div>

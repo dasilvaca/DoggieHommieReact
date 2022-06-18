@@ -25,6 +25,7 @@ const Posts = ({ posts }) => {
               tel =  {post.userData.telefono}
               image = {post.images}
               comments = {post.comments}
+              state_user = {post.state_user}
             />
           ))
 

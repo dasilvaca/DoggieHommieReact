@@ -28,6 +28,7 @@ const NewPost = () => {
                 grade: 0,
                 isDonation: false,
                 state: null,
+                state_user: null,
                 number_banned: null,
                 user: parseInt(localStorage.getItem("user")),
                 images:[]
@@ -106,7 +107,7 @@ const NewPost = () => {
                                         id="post-descripcion"
                                         rows="4"
                                         aria-describedby="dni_help"
-                                        placeholder="Añade tu historia aqui"
+                                        placeholder="Añade tu historia aquí"
                                         name="post-descripcion"
                                         onChange={(e) => setPost({ ...post_req, post: { ...post_req.post, description: e.target.value } })}
                                     />
@@ -146,7 +147,7 @@ const NewPost = () => {
 
 
                                         <label className="form-check-label" form="flexCheckDefault">
-                                            Desea recibir donaciones
+                                            ¿Desea recibir donaciones?
                                         </label>
                                     </div></div>
                                 <div style={{ padding: "2%" }}>

@@ -20,7 +20,8 @@ const Post = ({
   tel,
   email, 
   image,
-  comments
+  comments,
+  state_user
 }) => {
   
   const handleSubmit = async (event) => {
@@ -91,6 +92,7 @@ const Post = ({
         action: "report",
       }
     );
+    console.log();
     console.log(x.status);
     if (x.status === 200) {
       window.alert("El usuario ha sido reportado");
@@ -122,7 +124,7 @@ const Post = ({
       localStorage.setItem("user_profile_name", username_str),
       localStorage.setItem("user_is_active", is_active),
       localStorage.setItem("user_tel", tel),
-      localStorage.setItem("user_email", email),
+      localStorage.setItem("user_email", email)
       redirect()     
   };
 
@@ -148,6 +150,31 @@ const Post = ({
     }
   };
 
+  const pausePost = async (event) => {
+
+    event.preventDefault()
+    var x = await axios.patch(
+      "http://127.0.0.1:8000/post/deshabilitar/" + String(post_config_id),
+      {
+        state_user:null
+      }
+    );
+    console.log("estado",x.status);
+    console.log("tipo dato usuario post", typeof user_post_id);
+    console.log("usuario post",user_post_id);
+    console.log("tipo dato usuario sesión", typeof Number(localStorage.getItem('user')));
+    console.log("usuario sesion",localStorage.getItem('user'));
+    if (x.status === 200) {
+      window.alert("Tu post ha sido cambiado de estado");
+      window.location.href = "/";
+
+    } else {
+
+      window.alert("Error. Verifica los datos");
+
+    }
+  };
+
   return (
     <div
       className="card mb-3 m-2"
@@ -156,32 +183,65 @@ const Post = ({
       <div className="row g-0">
         <div className="col-md-2 col-rows-2">
           <div className="row">
-          <span 
-          title='Reportar Usuario'
-          style={{
-            width: "40%",
-            height: "40%",
-            marginTop: "10px"
-          }}
-          >
-              <img
-              id="ReportUser"
-              src={"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Antu_dialog-warning.svg/2048px-Antu_dialog-warning.svg.png"}
-              className="img-fluid"
-              alt="report icon"
+            <div className="col-sm" style={{paddingLeft: "6px"}}>
+            <span 
+              title='Reportar Usuario'
               style={{
-                width: "100%",
-                height: "100%",
-                position : "5px",
-                marginTop : "2px"
+                width: "40%",
+                height: "40%",
+                marginTop: "10px"
               }}
-              onClick = {reportUser}
-              
-            />
-          </span>
+              >
+                  <img
+                  id="ReportUser"
+                  src={"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Antu_dialog-warning.svg/2048px-Antu_dialog-warning.svg.png"}
+                  className="img-fluid"
+                  alt="report icon"
+                  style={{
+                    width: "100%",
+                    height: "90%",
+                    position : "5px",
+                    marginTop : "2px"
+                  }}
+                  onClick = {reportUser}           
+                />
+            </span>
+            </div>
+              <div className="col-sm">
+            </div>
+              <div className="col-sm">
+              {user_post_id === Number(localStorage.getItem('user')) ? (
+                  <span 
+                  title='Habilitar Post'
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    marginTop: "10px"
+                  }}
+                  >
+                    <img
+                        id="Config"
+                        src={"https://icon-library.com/images/pause-play-icon/pause-play-icon-28.jpg"}
+                        className="img-fluid"
+                        alt="report icon"
+                        style={{
+                          width: "80%",
+                          height: "80%",
+                          position : "5px",
+                          marginTop : "2px",
+                          marginLeft: "0px"
+                        }}
+                        data-toggle="dropdown"
+                        onClick = {pausePost}           
+                      />
+                </span>     
+                ) : (
+                  null
+                )}      
+          </div>
             <img
               src={photo}
-              className="img-fluid"
+              className="img-fluid-center"
               alt="..."
               style={{
                 backgroundRepeat: "no-repeat",
@@ -189,7 +249,7 @@ const Post = ({
                 borderRadius: "50%",
                 backgroundSize: "100% auto",
                 height: "100px",
-                margin: "5px",
+                margin: "5px"
               }}
             />
            <button class = "btn info" style={{ textAlign: "center", color: "#4A9FCD" }} onClick={user}>
@@ -204,6 +264,15 @@ const Post = ({
             user_post_id={user_post_id}
             upvotes = {upvotes}
           />
+          <div className="row">
+            <div className="col-sm">
+            </div>
+            <div className="col-sm">
+            </div>
+            <div className="col-sm">
+            </div>
+            
+          </div>
         </div>
         <div className="col-md-8">
           <div className="card-body">
@@ -212,7 +281,7 @@ const Post = ({
             <p className="card-text">{description}</p>
             <div>
                 {image===null || image==="" ? (
-                   <p> Nou</p>      
+                  null
                 ) : (
                   (image.split(',').map( img => (
                     <img src={img} alt={img} key={img} width="80%"></img>
@@ -245,6 +314,55 @@ const Post = ({
                     }}>
                   {upvotes}
                 </div>
+                <div class="col-1" style= {{
+                    marginLeft: "0px",
+                    marginTop: "0px",
+                    padding: "0%",
+                    }}>
+                {user_post_id === Number(localStorage.getItem('user')) && state_user === "ACTIVO" ? (
+                    <img
+                    id="active"
+                    src={"https://cdn-icons-png.flaticon.com/512/1828/1828640.png"}
+                    className="img-fluid"
+                    style={{
+                      width: "1.5rem",
+                      height: "1.5rem",
+                      marginLeft: "25%",
+                      marginTop: "0px",
+                    }}
+                    />
+
+                ) : (
+                  null
+                )}
+                {user_post_id === Number(localStorage.getItem('user')) && state_user === "INACTIVO" ? (
+                    <img
+                    id="inactive"
+                    src={"https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/White_X_in_red_background.svg/1200px-White_X_in_red_background.svg.png"}
+                    className="img-fluid"
+                    style={{
+                      width: "1.3rem",
+                      height: "1.3rem",
+                      marginLeft: "25%",
+                      marginTop: "0px",
+                    }}
+                    />
+
+                ) : (
+                  null
+                )}
+                </div>
+                <div class="col-3"style= {{
+                    marginLeft: "0.5%",
+                    marginTop: "0.5%",
+                    padding: "0%"
+                    }}>
+                {user_post_id === Number(localStorage.getItem('user')) ? (               
+                    <p>{state_user}</p>
+                ) : (
+                  null
+                )}
+                </div>
               </div>
             </div>
             
@@ -262,46 +380,23 @@ const Post = ({
             marginTop: "20px",
           }}
           onClick={report}
-        />
+        />   
         
+       
         {/*Commment form*/}
         <form onSubmit={comment} style= {{paddingBottom: "5%"}}>
               <div className="form-group text-start">
-                <div className='row row-cols-2'
-                style={{
-                  padding: "10px"
-                }}>
-                  <div className='col-9'
-                  style={{
-                    marginBottom: "10px"
-                    
-                  }}>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="input_comment"
-                      placeholder="Añade un comentario"
-                      name="comentario"
-                      onChange={(e) => { setComm({ ...comm, text:e.target.value, post: post_config_id})}}
-                    />
-                  </div>
-                  <div className="col-1" >
-                    <button class="btn btn-outline-primary" style={{ color: "#4A9FCD"}}>
-                      <strong> Comentar </strong>{" "}
-                    </button>
-                  </div>
-                </div>
-                <div style={{ borderStyle: "solid", color: "#000000" ,borderWidth:"1px", borderRadius: "5px",padding: "2%", paddingLeft: "3%", margin: "0"}} >
-                  <strong><h3 class="mb-1" style={{color: "#4A9FCD" }}> Comentarios</h3></strong>     
+                <div style={{ borderStyle: "solid", color: "rgb(74, 159, 205)" ,borderWidth:"1px", borderRadius: "5px",padding: "2%", paddingLeft: "3%", margin: "0"}} >
+                  <strong><h3 class="mb-1" style={{color: "rgb(74, 159, 205)" }}> Comentarios</h3></strong>     
                   <ul  class="list-group">
                   {comments===null || comments==="" ? (
                     <h2 class="mb-1" > </h2>      
                   ) : (
                     (comments.map( comment => (
-                      <div class="list-group comment"style={{ borderStyle: "solid",  borderWidth:"3px" , borderRadius: "15px"}}>
+                      <div class="list-group comment"style={{ borderStyle: "solid",  borderWidth:"1px" , borderRadius: "15px"}}>
                         <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
                           <div class="d-flex w-100 justify-content-between">
-                            <h5><b class="mb-1" style={{color: "#4A9FCD"}}>{comment.userData.user.first_name}</b></h5>
+                            <h5><b class="mb-1" style={{color: "#c6ab7c"}}>{comment.userData.user.first_name}</b></h5>
                             <small>{comment.date}</small>
                           </div>
                           <p class="mb-1">{comment.text}</p>
@@ -310,6 +405,42 @@ const Post = ({
                     ))   
                   ))}
                   </ul>
+                  <div className='row row-cols-2'
+                style={{
+                  padding: "0px",
+                }}>
+                  <div className='col-9'
+                  style={{
+                    marginBottom: "10px"
+                    
+                  }}>
+                    <input class= "comment"
+                      type="text"
+                      className="form-control"
+                      id="input_comment"
+                      placeholder="Añade un comentario"
+                      name="comentario"
+                      style={{
+                        borderStyle: "solid", 
+                        borderWidth:"1px" ,
+                        borderRadius: "15px",
+                        margin: "10px",
+                        paddingLeft: "15px",
+                        width: "100%",
+                        height: "100%"
+                      }}
+                      onChange={(e) => { setComm({ ...comm, text:e.target.value, post: post_config_id})}}
+                    />
+                  </div>
+                  <div className="col-1"
+                  style={{
+                    marginTop: "13px",
+                  }} >
+                    <button class="btn btn-outline-primary" style={{ color: "#4A9FCD", borderRadius: "10px"}}>
+                      <strong> Comentar </strong>{" "}
+                    </button>
+                  </div>
+                </div>
                 </div>
                
               </div>
