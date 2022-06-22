@@ -1,6 +1,9 @@
 {
   "name": "doggie_hommie_react",
   "version": "0.1.0",
+  "engines": {
+    "node": "16.14.2"
+  },
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.9.0",
