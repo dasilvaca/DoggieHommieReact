@@ -23,7 +23,8 @@ export const Profile = () => {
   const getCharacters = async () => {
     console.log("Usuario: ", user);
     const { data } = await axios.get(
-    `http://127.0.0.1:8000/post/getByUser/${user}`
+    `https://backdoggiehommie.herokuapp.com/post/getByUser/${user}`
+    // `http://127.0.0.1:8000/post/getByUser/${user}`
     );
     console.log(data)
     setCharacters(data);

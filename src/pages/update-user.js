@@ -19,7 +19,8 @@ function UpdateUser({ userId }) {
   const getUser = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:8000/updateUser/${parseInt(localStorage.getItem("user"))}`
+        // `http://localhost:8000/updateUser/${parseInt(localStorage.getItem("user"))}`
+        `https://backdoggiehommie.herokuapp.com/updateUser/${parseInt(localStorage.getItem("user"))}`
       );
       console.log(data)
       setUser({
@@ -48,7 +49,8 @@ function UpdateUser({ userId }) {
     };
     try {
       var x = await axios.patch(
-        `http://localhost:8000/updateUser/${parseInt(localStorage.getItem("user"))}`,
+        // `http://localhost:8000/updateUser/${parseInt(localStorage.getItem("user"))}`,
+        `https://backdoggiehommie.herokuapp.com/updateUser/${parseInt(localStorage.getItem("user"))}`,
         payload
         
       );
