@@ -1,34 +1,44 @@
 import React, { useState, useEffect } from "react";
 import { FaArrowAltCircleUp, FaRegShareSquare } from "react-icons/fa";
 import { AiOutlineDollar } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import LayOut from "../Layout/LayOut";
 
 function UpdateUser({ userId }) {
   //  const [isLoading, setIsLoading] = useState(true);
   // const [data, setData] = useState(() => ({}));
+  let navigate = useNavigate();
+
+  const routeChange = () =>{
+    let path = "/change-profile-picture"
+    navigate(path)
+  }
+
   const [user, setUser] = useState(() => ({
     name: "",
     email: "",
     phone: "",
     country: "",
     city: "",
-    id : ""
+    id: "",
   }));
   const getUser = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:8000/updateUser/${parseInt(localStorage.getItem("user"))}`
+        `http://localhost:8000/updateUser/${parseInt(
+          localStorage.getItem("user")
+        )}`
       );
-      console.log(data)
+      console.log(data);
       setUser({
         name: data.user.first_name,
         country: data.pais,
         city: data.ciudad,
         phone: data.telefono,
         email: data.user.username,
-        id : data.numero_documento
+        id: data.numero_documento,
       });
     } catch (error) {
       console.log(error);
@@ -48,15 +58,16 @@ function UpdateUser({ userId }) {
     };
     try {
       var x = await axios.patch(
-        `http://localhost:8000/updateUser/${parseInt(localStorage.getItem("user"))}`,
+        `http://localhost:8000/updateUser/${parseInt(
+          localStorage.getItem("user")
+        )}`,
         payload
-        
       );
       if (x.status === 200) {
-        window.alert("El perfil se ha actualizado correctamente")
-        window.location.href = '/'
-      }else{
-        window.alert("Error. Verifica los datos")
+        window.alert("El perfil se ha actualizado correctamente");
+        window.location.href = "/";
+      } else {
+        window.alert("Error. Verifica los datos");
       }
     } catch (error) {
       console.log(error.response.data);
@@ -189,27 +200,27 @@ function UpdateUser({ userId }) {
                       }}
                     ></input>
                   </label>
-                  <label className="my-3 w-100">Ciudad
-                  <input
-                    className="my-3 w-100"
-                    placeholder="Ciudad"
-                    value={user.city}
-                    onChange={(e) => {
-                      setUser({ ...user, city: e.target.value });
-                    }}
-                    style={{
-                      borderRadius: "6px",
-                      borderWidth: "1",
-                      backgroundColor: "rgb(235, 235, 235)",
-                      focusColor: "rgb(0, 153, 255)",
-                      lineHeight: "1.4",
-                      padding: "10px",
-                      caretColor: "rgb(51, 51, 51)",
-                      fontFamily: "DM Sans, sans-serif",
-                      textColor: "rgb(51, 51, 51)",
-                    }}
-                  ></input>
-                  
+                  <label className="my-3 w-100">
+                    Ciudad
+                    <input
+                      className="my-3 w-100"
+                      placeholder="Ciudad"
+                      value={user.city}
+                      onChange={(e) => {
+                        setUser({ ...user, city: e.target.value });
+                      }}
+                      style={{
+                        borderRadius: "6px",
+                        borderWidth: "1",
+                        backgroundColor: "rgb(235, 235, 235)",
+                        focusColor: "rgb(0, 153, 255)",
+                        lineHeight: "1.4",
+                        padding: "10px",
+                        caretColor: "rgb(51, 51, 51)",
+                        fontFamily: "DM Sans, sans-serif",
+                        textColor: "rgb(51, 51, 51)",
+                      }}
+                    ></input>
                   </label>
                 </div>
 
@@ -265,27 +276,25 @@ function UpdateUser({ userId }) {
                       }}
                     ></input>
                   </label>
-
-
-
                 </div>
               </div>
-            <div className="row pt-5 justify-content-between">
-              <div className="col-4">
-                <button
-                  type="button"
-                  className="btn-primary bton"
-                  style={{
-                    backgroundColor: "rgb(28, 28, 141)",
-                    textAlign: "center",
-                    borderRadius: "8",
-                  }}
-                >
-                  Cambiar contraseña
-                </button>
-              </div>
-          
-              <div className="col-4">
+              <div className="row pt-5 justify-content-between">
+                <div className="col-4">
+                  <button
+                    type="button"
+                    className="btn-primary bton"
+                    onClick={routeChange}
+                    style={{
+                      backgroundColor: "rgb(28, 28, 141)",
+                      textAlign: "center",
+                      borderRadius: "8",
+                    }}
+                  >
+                    Cambiar foto de perfil
+                  </button>
+                </div>
+
+                <div className="col-4">
                   <input
                     type="submit"
                     className="btn-primary bton"
@@ -296,11 +305,9 @@ function UpdateUser({ userId }) {
                       padding: "10px",
                     }}
                   ></input>
-
+                </div>
               </div>
-            </div>
             </form>
-
           </div>
         </div>
       </div>

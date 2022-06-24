@@ -68,6 +68,7 @@ const NewPost = () => {
         reader.readAsDataURL(preview);
         reader.onloadend = () => {
             const data = reader.result.toString().split(',')[1];
+            console.log("data: "+ data)
             setPost({ 
                 ...post_req, post: { 
                     ...post_req.post, 
