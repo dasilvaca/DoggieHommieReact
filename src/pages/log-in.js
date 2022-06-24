@@ -16,7 +16,8 @@ const LogIn = () => {
     event.preventDefault()
     // console.log('estado', state)
     console.log(backend_host + '/login')
-    var x = await axios.post('http://localhost:8000' + '/login', state)
+    // var x = await axios.post('http://localhost:8000' + '/login', state)//, fetch)
+    var x = await axios.post('https://backdoggiehommie.herokuapp.com/' + '/login', state)//, fetch)
     console.log('data', x.user)
 
     if (x.status === 200) {

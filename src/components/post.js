@@ -27,19 +27,20 @@ const Post = ({
   const handleSubmit = async (event) => {
     event.preventDefault()
 
-      delete state.user.password_confirmation;
-      var x =  axios.post('http://localhost:8000/users', state).then((response) =>{
-        console.log(x)
-        if(x.status === 201){
-          window.location.href("/login")
-        }else{
-          alert('')
-        }
-      })
-      console.log('data', x)
-      console.log('data', state)
-      
-  //}
+
+
+const Post = ({ photo, title, description, username_str, post_report_id }) => {
+  const report = async () => {
+    console.log(post_report_id)
+    // var x = await axios.patch("http://127.0.0.1:8000/post/RUD/" + String(post_report_id))
+    var x = await axios.patch("https://backdoggiehommie.herokuapp.com/post/RUD/" + String(post_report_id))
+    console.log(x.status)
+    if (x.status === 200) {
+      window.alert("El post ha sido reportado")
+      window.location.href = '/'
+    } else {
+      window.alert("Error. Verifica los datos")
+    }
 
   }
   const [state, setstate] = useState(() => (
