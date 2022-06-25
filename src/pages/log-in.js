@@ -4,6 +4,7 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 import cors from 'cors'
 import { backend_host } from '../global variables'
+import { login_url } from '../api'
 
 
 const LogIn = () => {
@@ -16,7 +17,8 @@ const LogIn = () => {
     event.preventDefault()
     // console.log('estado', state)
     console.log(backend_host + '/login')
-    var x = await axios.post('http://localhost:8000' + '/login', state)
+    // var x = await axios.post('http://localhost:8000' + '/login', state)//, fetch)
+    var x = await axios.post(login_url, state)//, fetch)
     console.log('data', x.user)
 
     if (x.status === 200) {

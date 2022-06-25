@@ -10,7 +10,7 @@ import { useContext } from "react";
 const Navbar = () => {
   return (
     <nav className="navbar">
-      <div class = "container" style={
+      <div className = "container" style={
         {
           display: "flex",
           justifyContent: "space-between",

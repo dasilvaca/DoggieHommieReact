@@ -14,7 +14,8 @@ const SignUp = () => {
     // }
     // else {
       delete state.user.password_confirmation;
-      var x =  axios.post('http://localhost:8000/users', state).then((response) =>{
+      // var x =  axios.post('http://localhost:8000/users', state).then((response) =>{
+      var x =  axios.post('https://backdoggiehommie.herokuapp.com/users', state).then((response) =>{
         console.log(x)
         if(x.status === 201){
           window.location.href("/login")

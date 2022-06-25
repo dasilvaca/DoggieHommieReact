@@ -10,7 +10,7 @@ const Posts = ({ posts }) => {
           posts.map((post) => (
             <Post
               // photo={post.image}
-              photo={Avatar}
+              photo={post.userData.profilePicture} // recibir la url de firebase
               description={post.description}
               title={post.title}
               username_str={post.userData.user.first_name + " " + post.userData.user.last_name}

@@ -5,27 +5,34 @@ import { Link, Navigate } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import LayOut from "../Layout/LayOut";
+import { height } from "@mui/system";
 
 const ChangeProfilePicture = () => {
+  const [profilePicture, setprofilePicture] = useState(() => ({
+    image: null,
+  }));
 
-    const [profilePicture, setprofilePicture] = useState(() => ({
-        image : null
-      }));
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    // var x = await axios.post('http://localhost:8000/post/', post_req)//, fetch)
+    var x = await axios.patch('https://backdoggiehommie.herokuapp.com/changeProfilePicture/', post_req)//, fetch)
 
+
+    if (x.status === 200) {
+        window.alert("Post creado exitosamente")
+        window.location.href = '/'
+    } else {
+        window.alert("Error. Verifica los datos")
+    }
+    console.log('data', x)
+}
 
   const onFileChange = (event) => {
-    const preview = event.target.files[0];
-    const reader = new FileReader();
-    const filename = preview.name;
-    reader.readAsDataURL(preview);
-    reader.onloadend = () => {
-      const data = reader.result.toString().split(",")[1];
-      console.log("data: " + data);
-      setprofilePicture({
-        image : preview
-      });
-
-    };
+    const preview = URL.createObjectURL(event.target.files[0]);
+    // const reader = new FileReader();
+    setprofilePicture({
+      image: preview,
+    });
   };
 
   return (
@@ -67,18 +74,23 @@ const ChangeProfilePicture = () => {
               </div>
             </div>
 
-            <div className="row pb-5">
+            <div className="row pb-5 align-items-center">
               <div className="col-6">
-                <h1>image</h1>
-                <img
-                  src= "{profilePicture.image}"
-                  className="rounded float-left"
-                  alt="profilePicture"
+
+                <img src={profilePicture.image} id="profileImage"
+                style={{
+                  borderRadius: "50%",
+                  width : "25rem",
+                  height:  "25rem",
+                  backgroundSize: "cover"
+                  
+                }}
                 ></img>
               </div>
 
               <div className="col">
                 <h1>Añade una foto</h1>
+
                 <input
                   type="file"
                   //accept='image/*'
@@ -92,7 +104,7 @@ const ChangeProfilePicture = () => {
                 <button
                   type="button"
                   className="btn-primary bton"
-                  //onClick={handleSubmit}
+                  onClick={handleSubmit}
                   style={{
                     backgroundColor: "rgb(28, 28, 141)",
                     textAlign: "center",
