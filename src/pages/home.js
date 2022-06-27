@@ -14,9 +14,17 @@ const Home = () => {
       // 'http://127.0.0.1:8000/post/getAll' //?limit=20
       // 'https://backdoggiehommie.herokuapp.com/post/getAll'
     );
+
+    
     console.log(data)
     setCharacters(data.results);
   };
+  const getCurrentUser = async ()=>{
+    const { data } = await axios.get(
+      posts_url
+    );
+
+  }
 
   useEffect(() => {
     getCharacters();

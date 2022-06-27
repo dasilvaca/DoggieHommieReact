@@ -6,35 +6,51 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import LayOut from "../Layout/LayOut";
 import { height } from "@mui/system";
+import { change_picture_url } from "../api";
+
 
 const ChangeProfilePicture = () => {
-  const [profilePicture, setprofilePicture] = useState(() => ({
+  const [state, setState] = useState(() => ({
     image: null,
+    previewImage : null
   }));
+  const userId = parseInt(localStorage.getItem("user"))
+
 
   const handleSubmit = async (event) => {
     event.preventDefault()
     // var x = await axios.post('http://localhost:8000/post/', post_req)//, fetch)
-    var x = await axios.patch('https://backdoggiehommie.herokuapp.com/changeProfilePicture/', post_req)//, fetch)
+    // var x = await axios.patch(`https://backdoggiehommie.herokuapp.com/changePicture/${userId}`, state.image)//, fetch)
+    var x = await axios.patch(`${change_picture_url}/${userId}`, state.image)
 
 
     if (x.status === 200) {
-        window.alert("Post creado exitosamente")
-        window.location.href = '/'
+        window.alert("Has cambiado tu foto de perfil")
+        localStorage.setItem('user_picture',data["profile_picture"])
+        window.location.href = '/profile'
     } else {
-        window.alert("Error. Verifica los datos")
+      window.alert("Ops. Algo salió mal, estamos trabajando en eso")
     }
     console.log('data', x)
 }
 
   const onFileChange = (event) => {
-    const preview = URL.createObjectURL(event.target.files[0]);
-    // const reader = new FileReader();
-    setprofilePicture({
-      image: preview,
+    const file = event.target.files[0];
+    const preview = URL.createObjectURL(file);
+    const filename = file.name
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+
+    reader.onloadend = () => {
+      const imgData = reader.result.toString().split(',')[1];
+    console.log("name: "+filename)
+    console.log("data: "+ imgData)
+    setState({
+      image: {imgName : filename, data : imgData},
+      previewImage : preview
     });
   };
-
+  }
   return (
     <LayOut>
       <div
@@ -77,7 +93,7 @@ const ChangeProfilePicture = () => {
             <div className="row pb-5 align-items-center">
               <div className="col-6">
 
-                <img src={profilePicture.image} id="profileImage"
+                <img src={state.previewImage} id="profileImage"
                 style={{
                   borderRadius: "50%",
                   width : "25rem",

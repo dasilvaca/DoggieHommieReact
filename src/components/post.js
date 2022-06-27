@@ -8,6 +8,7 @@ import Modal from './donateModal';
 import { AiOutlineDollar } from "react-icons/ai";
 import { ArrowRight } from 'react-bootstrap-icons';
  */
+import Avatar from '../assets/img/Avatar.jpg';
 
 
 
@@ -36,7 +37,7 @@ const Post = ({ photo, title, description, username_str, post_report_id }) => {
       <div className="row g-0">
         <div className="col-md-2 col-rows-2" >
           <div className='row'>
-            <img src={photo} className="img-fluid" alt="..."
+            <img src={photo ? (photo) : (Avatar)} className="img-fluid" alt="..."
               style={{
                 backgroundRepeat: "no-repeat", backgroundPosition: "50%",
                 borderRadius: "50%",

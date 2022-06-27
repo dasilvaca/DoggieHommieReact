@@ -23,6 +23,9 @@ export const Profile = () => {
   const tel = localStorage.getItem("user_tel");
   const email = localStorage.getItem("user_email");
   const isActive = localStorage.getItem("user_active");
+  const profilePicture = localStorage.getItem("user_picture");
+  
+  console.log("picture: "+ profilePicture)
 
   const getCharacters = async () => {
     console.log("Usuario: ", user);
@@ -67,8 +70,9 @@ export const Profile = () => {
               marginLeft: "20%",
             }}
           >
-            <div style={{ borderStyle: "none" }}>
-              <div
+
+            <div className="row justify-content-left" style={{ borderStyle: "none" }}>
+              <div className="col-3 d-flex justify-content-start"
                 style={{
                   display: "inline-block",
                   marginLeft: "12%",
@@ -76,29 +80,30 @@ export const Profile = () => {
                 }}
               >
                 <img
-                  alt=""
+                  alt="Profile picture"
                   className="rounded-circle"
-                  src=""
+                  src={profilePicture}
                   style={{
                     maxHeight: "100px",
                     maxWidth: "100px",
-                    width: "100%",
+                    width: "90%",
                     float: "left",
                     clear: "both",
                     display: "inline",
                   }}
-                />
+                /> 
                 <div
                   style={{
                     display: "inline-block",
                     maxWidth: "16em",
+                    height: "5em",
                     paddingLeft: "5px",
                     textAlign: "center",
                     margin: "auto",
                     paddingTop: "18px",
                   }}
                 >
-                  <h3
+                  {/* <h4
                     style={{
                       display: "block",
                       maxWidth: "15em",
@@ -107,7 +112,7 @@ export const Profile = () => {
                     }}
                   >
                     {name}
-                  </h3>
+                  </h4> */}
                 </div>
                 <div
                   style={{
