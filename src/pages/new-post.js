@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import cors from 'cors'
 import LayOut from '../Layout/LayOut'
 import AddBankAccounts from '../components/AddBankAccounts'
+import { post_url } from '../api'
 
 const NewPost = () => {
     class bankAccountClass {
@@ -48,6 +49,8 @@ const NewPost = () => {
         event.preventDefault()
         // var x = await axios.post('http://localhost:8000/post/', post_req)//, fetch)
         var x = await axios.post('https://backdoggiehommie.herokuapp.com/post/', post_req)//, fetch)
+        
+        var x = await axios.post(post_url, post_req)//, fetch)
 
 
         if (x.status === 200) {

@@ -8,7 +8,8 @@ export const posts_url = `${BASE_URL}/post/getAll`
 export const posts_by_user_url = `${BASE_URL}/post/getByUser`
 export const change_picture_url = `${BASE_URL}/changePicture`
 export const user_id_url = `${BASE_URL}/user`
-
+export const notification_getAll_url = `${BASE_URL}/notification/getAll`
+export const users_url = `${BASE_URL}/users`
 
 console.log(BASE_URL);
 

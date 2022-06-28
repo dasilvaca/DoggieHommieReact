@@ -5,13 +5,16 @@ import ProfilePic from "../assets/img/4.png";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Posts from '../components/posts';
+import { notification_getAll_url } from '../api';
 
 export const Notificacion = () => {
     const [notifications, setNotifications] = useState([]);
 
     const getNotification = async () => {
         const { data } = await axios.get(
-            `http://127.0.0.1:8000/notification/getAll/${localStorage.getItem("user")}` //?limit=20
+            // `http://127.0.0.1:8000/notification/getAll/${localStorage.getItem("user")}` //?limit=20
+            `${notification_getAll_url}/${localStorage.getItem("user")}`
+
         );
         console.log(data)
         setNotifications(data.results);

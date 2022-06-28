@@ -33,7 +33,8 @@ export const UserProfile = () => {
   const getCharacters = async () => {
     console.log("Usuario: ", user);
     const { data } = await axios.get(
-    `http://127.0.0.1:8000/post/getByUser/${user}`
+    // `http://127.0.0.1:8000/post/getByUser/${user}`
+    `${posts_by_user_url}/${user}`
     );
     console.log(data)
     setCharacters(data.results);
