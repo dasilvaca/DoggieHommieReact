@@ -11,7 +11,7 @@ export const change_picture_url = `${BASE_URL}/changePicture`
 export const user_id_url = `${BASE_URL}/user`
 export const notification_getAll_url = `${BASE_URL}/notification/getAll`
 export const users_url = `${BASE_URL}/users`
-
+export const post_RUD_url =  `${BASE_URL}/post/RUD`
 console.log(BASE_URL);
 
 
