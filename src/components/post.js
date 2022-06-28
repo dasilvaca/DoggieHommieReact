@@ -18,7 +18,7 @@ const Post = ({ photo, title, description, username_str, post_report_id }) => {
     var x = await axios.patch(
       `${post_RUD_url}/${post_report_id}`
       // "https://backdoggiehommie.herokuapp.com/post/RUD/" +
-        // String(post_report_id)
+      // String(post_report_id)
     );
     console.log(x.status);
     if (x.status === 200) {
