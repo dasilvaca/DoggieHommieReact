@@ -5,6 +5,7 @@ import { Link, Navigate } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import LayOut from "../Layout/LayOut";
+import { updateUser_url } from "../api";
 
 function UpdateUser({ userId }) {
   //  const [isLoading, setIsLoading] = useState(true);
@@ -27,8 +28,9 @@ function UpdateUser({ userId }) {
   const getUser = async () => {
     try {
       const { data } = await axios.get(
+        `${updateUser_url}/${parseInt(localStorage.getItem("user"))}`
         // `http://localhost:8000/updateUser/${parseInt(localStorage.getItem("user"))}`
-        `https://backdoggiehommie.herokuapp.com/updateUser/${parseInt(localStorage.getItem("user"))}`
+        // `https://backdoggiehommie.herokuapp.com/updateUser/${parseInt(localStorage.getItem("user"))}`
       );
       console.log(data);
       setUser({

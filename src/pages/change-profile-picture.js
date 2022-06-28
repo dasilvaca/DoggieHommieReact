@@ -5,29 +5,52 @@ import { Link, Navigate } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import LayOut from "../Layout/LayOut";
+import { height } from "@mui/system";
+import { change_picture_url } from "../api";
+
 
 const ChangeProfilePicture = () => {
+  const [state, setState] = useState(() => ({
+    image: null,
+    previewImage : null
+  }));
+  const userId = parseInt(localStorage.getItem("user"))
 
-    const [profilePicture, setprofilePicture] = useState(() => ({
-        image : null
-      }));
 
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    // var x = await axios.post('http://localhost:8000/post/', post_req)//, fetch)
+    // var x = await axios.patch(`https://backdoggiehommie.herokuapp.com/changePicture/${userId}`, state.image)//, fetch)
+    var x = await axios.patch(`${change_picture_url}/${userId}`, state.image)
+
+
+    if (x.status === 200) {
+        window.alert("Has cambiado tu foto de perfil")
+        localStorage.setItem('user_picture',data["profile_picture"])
+        window.location.href = '/profile'
+    } else {
+      window.alert("Ops. Algo salió mal, estamos trabajando en eso")
+    }
+    console.log('data', x)
+}
 
   const onFileChange = (event) => {
-    const preview = event.target.files[0];
+    const file = event.target.files[0];
+    const preview = URL.createObjectURL(file);
+    const filename = file.name
     const reader = new FileReader();
-    const filename = preview.name;
-    reader.readAsDataURL(preview);
+    reader.readAsDataURL(file);
+
     reader.onloadend = () => {
-      const data = reader.result.toString().split(",")[1];
-      console.log("data: " + data);
-      setprofilePicture({
-        image : preview
-      });
-
-    };
+      const imgData = reader.result.toString().split(',')[1];
+    console.log("name: "+filename)
+    console.log("data: "+ imgData)
+    setState({
+      image: {imgName : filename, data : imgData},
+      previewImage : preview
+    });
   };
-
+  }
   return (
     <LayOut>
       <div
@@ -67,18 +90,23 @@ const ChangeProfilePicture = () => {
               </div>
             </div>
 
-            <div className="row pb-5">
+            <div className="row pb-5 align-items-center">
               <div className="col-6">
-                <h1>image</h1>
-                <img
-                  src= "{profilePicture.image}"
-                  className="rounded float-left"
-                  alt="profilePicture"
+
+                <img src={state.previewImage} id="profileImage"
+                style={{
+                  borderRadius: "50%",
+                  width : "25rem",
+                  height:  "25rem",
+                  backgroundSize: "cover"
+                  
+                }}
                 ></img>
               </div>
 
               <div className="col">
                 <h1>Añade una foto</h1>
+
                 <input
                   type="file"
                   //accept='image/*'
@@ -92,7 +120,7 @@ const ChangeProfilePicture = () => {
                 <button
                   type="button"
                   className="btn-primary bton"
-                  //onClick={handleSubmit}
+                  onClick={handleSubmit}
                   style={{
                     backgroundColor: "rgb(28, 28, 141)",
                     textAlign: "center",
