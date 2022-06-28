@@ -14,6 +14,7 @@ export const users_url = `${BASE_URL}/users`
 export const post_RUD_url =  `${BASE_URL}/post/RUD`
 export const user_report_url = `${BASE_URL}/user/report`
 export const comment_create_url = `${BASE_URL}/comment/create`
+export const bank_account_url = `${BASE_URL}/bankAccount`
 
 console.log(BASE_URL);
 
