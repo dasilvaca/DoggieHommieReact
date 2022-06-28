@@ -1,5 +1,6 @@
 const BASE_URL =  process.env.REACT_APP_API_URL
 
+// url de /pages 
 export const login_url = `${BASE_URL}/login`
 export const post_url = `${BASE_URL}/post`
 export const updateUser_url = `${BASE_URL}/updateUser`
