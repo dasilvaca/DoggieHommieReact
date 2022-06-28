@@ -184,6 +184,7 @@ const Post = ({
         <div className="col-md-2 col-rows-2">
           <div className="row">
             <div className="col-sm" style={{paddingLeft: "6px"}}>
+            {user_post_id !== Number(localStorage.getItem('user')) ? (
             <span 
               title='Reportar Usuario'
               style={{
@@ -205,7 +206,7 @@ const Post = ({
                   }}
                   onClick = {reportUser}           
                 />
-            </span>
+            </span>):(null)}
             </div>
               <div className="col-sm">
             </div>
@@ -368,6 +369,13 @@ const Post = ({
             
           </div>
         </div>
+        {user_post_id !== Number(localStorage.getItem('user')) ? (
+        <span 
+        title='Report Post'
+        style={{
+          width: "10%",
+          height: "10%"
+        }}>
         <img
           id="ReportPost"
           src={"http://cdn.onlinewebfonts.com/svg/img_152201.png"}
@@ -381,7 +389,7 @@ const Post = ({
           }}
           onClick={report}
         />   
-        
+        </span>):(null)}
        
         {/*Commment form*/}
         <form onSubmit={comment} style= {{paddingBottom: "5%"}}>
