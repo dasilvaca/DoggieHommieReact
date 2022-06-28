@@ -48,7 +48,7 @@ const NewPost = () => {
     const handleSubmit = async (event) => {
         event.preventDefault()
         // var x = await axios.post('http://localhost:8000/post/', post_req)//, fetch)
-        var x = await axios.post('https://backdoggiehommie.herokuapp.com/post/', post_req)//, fetch)
+        // var x = await axios.post('https://backdoggiehommie.herokuapp.com/post/', post_req)//, fetch)
         
         var x = await axios.post(post_url, post_req)//, fetch)
 
