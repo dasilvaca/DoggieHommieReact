@@ -7,16 +7,16 @@ import axios from 'axios'
 const AddBankAccounts = () => {
 
 
-    
+
     const [bankAccounts, setBankAccounts] = useState([]);
-    
+
     const getBankAccounts = async () => {
         // actualArray = []
         const { data } = await axios.get(
             // 'http://127.0.0.1:8000/bankAccount/' + localStorage.getItem("user") + '?limit=100'
             'https://backdoggiehommie.herokuapp.com/bankAccount/' + localStorage.getItem("user") + '?limit=100'
         )
-        
+
         setBankAccounts(data.results);
     };
 
@@ -31,9 +31,9 @@ const AddBankAccounts = () => {
             "bank_type": "",
             "user": parseInt(localStorage.getItem("user"))
         }
-        
-        )
-        );
+
+    )
+    );
     return (
         <div className='row row-cols-2'>
             <div className='col col-rows-3'>
@@ -50,30 +50,31 @@ const AddBankAccounts = () => {
                 </div>
                 <div className='row'>
                     {/* Deploy a dropdown list*/}
-                    <select 
+
+                    <select
                         className='form-control'
-                        style={{ 
-                            width: "60%", 
-                            margin: "0 0 16px 0" }} 
-                        required='True'
-                        onChange={(e) => {setNewBankAccounts({...newBankAccount, bank_name: e.target.value})}}
+                        style={{
+                            width: "60%",
+                            margin: "0 0 16px 0"
+                        }}
+                        onChange={(e) => { setNewBankAccounts({ ...newBankAccount, bank_name: e.target.value }) }}
                     >
-                        <option defaultValue value=""> --Seleccione una banco-- </option>
+                        <option defaultValue value=""> --Seleccione un banco-- </option>
                         <option >Nequi</option>
                         <option >Daviplata</option>
                         <option >Paypal</option>
                     </select>
-
                 </div>
+
                 <div className='row'>
                     {/* Deploy a dropdown list*/}
-                    <select 
+                    <select
                         className='form-control'
-                        style={{ 
-                            width: "60%", 
-                            margin: "0 0 16px 0" }} 
-                        required='True'
-                        onChange={(e) => {setNewBankAccounts({...newBankAccount, bank_type: e.target.value})}}
+                        style={{
+                            width: "60%",
+                            margin: "0 0 16px 0"
+                        }}
+                        onChange={(e) => { setNewBankAccounts({ ...newBankAccount, bank_type: e.target.value }) }}
                     >
                         <option defaultValue="" value=""> --Tipo de cuenta-- </option>
                         <option value="Ahorros">Ahorros</option>
@@ -89,7 +90,7 @@ const AddBankAccounts = () => {
                         id="account-number"
                         placeholder="Numero de cuenta"
                         style={{ width: "60%" }}
-                        onChange={(e) => {setNewBankAccounts({...newBankAccount, account_number: e.target.value})}}
+                        onChange={(e) => { setNewBankAccounts({ ...newBankAccount, account_number: e.target.value }) }}
                     />
                 </div>
                 <div className='row'>
@@ -98,8 +99,8 @@ const AddBankAccounts = () => {
                         className="btn-primary bton"
                         value="Añadir"
                         style={{ width: "60%" }}
-                        onClick={(e) => {  
-                            if (! (newBankAccount.bank_name && newBankAccount.account_number && newBankAccount.bank_type)) {
+                        onClick={(e) => {
+                            if (!(newBankAccount.bank_name && newBankAccount.account_number && newBankAccount.bank_type)) {
                                 window.alert("Todos los campos en el formulario son obligatorios")
                             }
                             else {
@@ -108,7 +109,7 @@ const AddBankAccounts = () => {
                                 // window.location.reload(false);
                                 getBankAccounts();
                             }
-                            
+
                         }}
                     />
                 </div>

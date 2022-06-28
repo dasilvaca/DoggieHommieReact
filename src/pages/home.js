@@ -3,18 +3,28 @@ import axios from 'axios';
 import Posts from '../components/posts';
 import CreatePost from '../components/createPost';
 import LayOut from '../Layout/LayOut';
+import { posts_url } from '../api';
 
 const Home = () => {
   const [characters, setCharacters] = useState([]);
 
   const getCharacters = async () => {
     const { data } = await axios.get(
+      posts_url
       // 'http://127.0.0.1:8000/post/getAll' //?limit=20
-      'https://backdoggiehommie.herokuapp.com/post/getAll'
+      // 'https://backdoggiehommie.herokuapp.com/post/getAll'
     );
+
+    
     console.log(data)
     setCharacters(data.results);
   };
+  const getCurrentUser = async ()=>{
+    const { data } = await axios.get(
+      posts_url
+    );
+
+  }
 
   useEffect(() => {
     getCharacters();
