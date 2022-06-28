@@ -19,7 +19,7 @@ const LogIn = () => {
     console.log(backend_host + '/login')
     // var x = await axios.post('http://localhost:8000' + '/login', state)//, fetch)
     var x = await axios.post(login_url, state)//, fetch)
-    console.log('data: ', x.user)
+    console.log('data: ', x)
 
     if (x.status === 200) {
       localStorage.setItem('token', x.data.token)
@@ -29,6 +29,8 @@ const LogIn = () => {
       localStorage.setItem('username', x.data.nombreUser)
       localStorage.setItem('user_tel',x.data.telefono)
       localStorage.setItem('user_email',x.data.email)
+      localStorage.setItem('user_picture',x.data.profile_picture)
+
 
       if(x.data.active ===true){
         localStorage.setItem('user_active',"Activo")

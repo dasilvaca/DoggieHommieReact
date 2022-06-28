@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import Posts from "../components/posts";
 import { posts_by_user_url } from "../api";
+import { Avatar } from "@mui/material";
 
 export const Profile = () => {
   const signOut = () => {
@@ -13,6 +14,8 @@ export const Profile = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user_id");
     localStorage.removeItem("user");
+    localStorage.removeItem("user_picture");
+
     window.location.href = "/";
   };
 
@@ -82,7 +85,7 @@ export const Profile = () => {
                 <img
                   alt="Profile picture"
                   className="rounded-circle"
-                  src={profilePicture}
+                  src={profilePicture ? profilePicture : Avatar}
                   style={{
                     maxHeight: "100px",
                     maxWidth: "100px",
