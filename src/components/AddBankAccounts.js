@@ -13,7 +13,8 @@ const AddBankAccounts = () => {
     const getBankAccounts = async () => {
         // actualArray = []
         const { data } = await axios.get(
-            'http://127.0.0.1:8000/bankAccount/' + localStorage.getItem("user") + '?limit=100'
+            // 'http://127.0.0.1:8000/bankAccount/' + localStorage.getItem("user") + '?limit=100'
+            'https://backdoggiehommie.herokuapp.com/bankAccount/' + localStorage.getItem("user") + '?limit=100'
         )
 
         setBankAccounts(data.results);
@@ -103,7 +104,8 @@ const AddBankAccounts = () => {
                                 window.alert("Todos los campos en el formulario son obligatorios")
                             }
                             else {
-                                axios.post('http://127.0.0.1:8000/bankAccount/' + localStorage.getItem("user"), newBankAccount)
+                                // axios.post('http://127.0.0.1:8000/bankAccount/' + localStorage.getItem("user"), newBankAccount)
+                                axios.post('https://backdoggiehommie.herokuapp.com/bankAccount/' + localStorage.getItem("user"), newBankAccount)
                                 // window.location.reload(false);
                                 getBankAccounts();
                             }

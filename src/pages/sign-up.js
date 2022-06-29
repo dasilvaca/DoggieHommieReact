@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import AppLogo from '../assets/img/4.png'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import { users_url } from '../api'
 
 const SignUp = () => {
   const handleSubmit = async (event) => {
@@ -14,7 +15,9 @@ const SignUp = () => {
     // }
     // else {
       delete state.user.password_confirmation;
-      var x =  axios.post('http://localhost:8000/users', state).then((response) =>{
+      // var x =  axios.post('http://localhost:8000/users', state).then((response) =>{
+        // 'https://backdoggiehommie.herokuapp.com/users' esta es la que estaba antes
+      var x =  axios.post(users_url, state).then((response) =>{
         console.log(x)
         if(x.status === 201){
           window.location.href("/login")

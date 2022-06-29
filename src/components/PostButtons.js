@@ -1,15 +1,16 @@
 import React from "react"
 import axios from "axios"
 import DonationModal from "./MakeDonationModal"
+import { post_RUD_url } from "../api";
 
 
 const PostButtons = ({ title, description, username_str, post_config_id, user_post_id, upvotes}) => {
 
 
     const upvote = async () => {
-
+        // "http://127.0.0.1:8000/post/RUD/"
         var upRequest = await axios.patch(
-            "http://127.0.0.1:8000/post/RUD/" + String(post_config_id),
+            `${post_RUD_url}/${post_config_id}`,
             {
                 userID: localStorage.getItem("user"),
                 action: "upvote",

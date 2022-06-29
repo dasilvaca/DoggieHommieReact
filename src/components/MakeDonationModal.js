@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios"
+import { bank_account_url } from "../api";
 
 const DonationModal = ({
     title,
@@ -14,8 +15,9 @@ const DonationModal = ({
 
     const getBankAccounts = async () => {
         // actualArray = []
+        // 'http://127.0.0.1:8000/bankAccount/' +  /*String(user_post_id)*/ localStorage.getItem("user") + '?limit=100'
         const { data } = await axios.get(
-            'http://127.0.0.1:8000/bankAccount/' +  /*String(user_post_id)*/ localStorage.getItem("user") + '?limit=100'
+           `${bank_account_url}/${localStorage.getItem("user")}?limit=100`
         )
 
         setBankAccounts(data.results);
