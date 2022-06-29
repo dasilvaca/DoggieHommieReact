@@ -74,13 +74,12 @@ const Post = ({
   }));
 
   const report = async () => {
-    console.log(post_report_id);
-    // var x = await axios.patch("http://127.0.0.1:8000/post/RUD/" + String(post_report_id))
+    //var x = await axios.patch("https://backdoggiehommie.herokuapp.com/post/RUD/" + String(post_config_id))
     // "https://backdoggiehommie.herokuapp.com/post/RUD/" +
     // String(post_report_id)
-    var x = await axios.patch(`${post_RUD_url}/${post_report_id}`, {
-      action: "report",
-    });
+    var x = await axios.patch(`${post_RUD_url}/${post_config_id}`,{
+      action: "report"
+    })
     console.log(x.status);
     if (x.status === 200) {
       window.alert("El post ha sido reportado");
