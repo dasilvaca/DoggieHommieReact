@@ -24,6 +24,7 @@
   color: white;
 }
 
+
 .App-link {
   color: #61dafb;
 }
@@ -59,4 +60,12 @@
 
   background-color: #37384F;
 }
+
+.comment{
+  margin-top : 2%;
+  border-color: rgb(74, 159, 205);
+  border-width: 10px;
+}
+
+
 

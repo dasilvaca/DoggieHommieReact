@@ -1,6 +1,9 @@
 {
   "name": "doggie_hommie_react",
   "version": "0.1.0",
+  "engines": {
+    "node": "16.14.2"
+  },
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.9.0",
@@ -12,6 +15,7 @@
     "axios": "^0.26.1",
     "bootstrap": "^5.1.3",
     "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
     "react": "^18.0.0",
     "react-bootstrap-icons": "^1.8.2",
     "react-dom": "^18.0.0",

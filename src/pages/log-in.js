@@ -4,6 +4,7 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 import cors from 'cors'
 import { backend_host } from '../global variables'
+import { login_url } from '../api'
 
 
 const LogIn = () => {
@@ -16,8 +17,9 @@ const LogIn = () => {
     event.preventDefault()
     // console.log('estado', state)
     console.log(backend_host + '/login')
-    var x = await axios.post('http://localhost:8000' + '/login', state)//, fetch)
-    console.log('data', x.user)
+    // var x = await axios.post('http://localhost:8000' + '/login', state)//, fetch)
+    var x = await axios.post(login_url, state)//, fetch)
+    console.log('data: ', x)
 
     if (x.status === 200) {
       localStorage.setItem('token', x.data.token)
@@ -25,11 +27,23 @@ const LogIn = () => {
       // console.log(localStorage.getItem('user'), x.data.data.idUser)
       localStorage.setItem('user', x.data.idUser)
       localStorage.setItem('username', x.data.nombreUser)
+      localStorage.setItem('user_tel',x.data.telefono)
+      localStorage.setItem('user_email',x.data.email)
+      localStorage.setItem('user_picture',x.data.profile_picture)
+
+
+      if(x.data.active ===true){
+        localStorage.setItem('user_active',"Activo")
+      }else{
+        localStorage.setItem('user_active',"Bloqueado")
+      }
+      
       window.location.href = '/'
 
     }
     else {
-      alert('Usuario o contraseña incorrectos')
+      console.log(x.status);
+      window.alert(x.detail);
     }
 
   }
