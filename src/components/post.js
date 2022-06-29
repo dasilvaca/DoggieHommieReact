@@ -149,7 +149,7 @@ const Post = ({
   const pausePost = async (event) => {
     event.preventDefault();
     var x = await axios.patch(
-      "http://127.0.0.1:8000/post/deshabilitar/" + String(post_config_id),
+      'https://backdoggiehommie.herokuapp.com/post/deshabilitar/' + String(post_config_id),
       {
         state_user: null,
       }
