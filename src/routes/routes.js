@@ -8,7 +8,11 @@ import RestorePass from '../pages/restore-pass';
 import NewPost from '../pages/new-post';
 import UpdateUser,{Foo} from '../pages/update-user';
 import { Profile } from '../pages/Profile';
+import {UserProfile} from '../pages/user-profile';
+import ChangeProfilePicture from '../pages/change-profile-picture';
+import {Notificacion} from '../pages/notificacion';
 import LayOut from '../Layout/LayOut';
+
 
 
 // const PrivateRoutes = ({ component: Component, ...rest }) => (
@@ -29,8 +33,11 @@ const RoutesComponent = () => (
         <Route exact path="/restorepass" element={<RestorePass />} />
         <Route exact path="/new-post" element={<NewPost />} />
         <Route exact path="/profile" element={<Profile />} />
+        <Route exact path="/user-profile" element={<UserProfile />} />
         <Route exact path="/updateUser" element={<UpdateUser userId={4}/> } />
+        <Route exact path="/notifications" element={<Notificacion/> } />
         <Route exact path="/" element={<Home />} />
+        <Route exact path="/change-profile-picture" element={<ChangeProfilePicture /> } />
         <Route path="*" element={<Error />} />
     </Routes>
   </BrowserRouter>

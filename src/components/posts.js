@@ -9,19 +9,32 @@ const Posts = ({ posts }) => {
         {posts.length > 0 ? (
           posts.map((post) => (
             <Post
-              // photo={post.image}
-              photo={Avatar}
+             photo={post.userData.profile_picture} 
+              // photo = {Avatar}
               description={post.description}
               title={post.title}
               username_str={post.userData.user.first_name + " " + post.userData.user.last_name}
-              post_report_id = {post.id}
+              post_config_id = {post.id}
+              user_post_id = {post.userData.id}
+              upvotes = {post.grade}
+              date = {post.date}
+              // post_report_id = {post.id}
+              key={post.id}
+              is_active = {post.userData.user.is_active}
+              email={post.userData.user.username}
+              tel =  {post.userData.telefono}
+              image = {post.images}
+              comments = {post.comments}
+              state_user = {post.state_user}
             />
           ))
 
         ) : (
-          <div class="spinner-border" role="status" style={{margin: "20%"}}>
-            <span class="sr-only">Loading...</span>
+          <div className="spinner-border" role="status" style={{margin: "20%"}}>
+            <span className="sr-only">Loading...</span>
+            
           </div>
+          
           // TODO: Add a loading animation
         )}
       </div>

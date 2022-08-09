@@ -2,23 +2,33 @@ import React, { useState } from 'react'
 import AppLogo from '../assets/img/4.png'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import { users_url } from '../api'
 
 const SignUp = () => {
   const handleSubmit = async (event) => {
     event.preventDefault()
 
-    if (state.user.password !== state.user.password_confirmation) {
-      alert("Las contraseñas no coinciden")
-      console.log('data', state)
-      return
-    }
-    else {
+    // if (state.user.password !== state.user.password_confirmation) {
+    //   alert("Las contraseñas no coinciden")
+    //   console.log('data', state)
+    //   return
+    // }
+    // else {
       delete state.user.password_confirmation;
-      var x = await axios.post('http://localhost:8000/users', state);
+      // var x =  axios.post('http://localhost:8000/users', state).then((response) =>{
+        // 'https://backdoggiehommie.herokuapp.com/users' esta es la que estaba antes
+      var x =  axios.post(users_url, state).then((response) =>{
+        console.log(x)
+        if(x.status === 201){
+          window.location.href("/login")
+        }else{
+          alert('')
+        }
+      })
       console.log('data', x)
       console.log('data', state)
-      window.location.href("/login")
-    }
+      
+  //}
 
   }
   const [state, setstate] = useState(() => (

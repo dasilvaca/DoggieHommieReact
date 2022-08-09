@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import cors from 'cors'
 import LayOut from '../Layout/LayOut'
 import AddBankAccounts from '../components/AddBankAccounts'
+import { post_url } from '../api'
 
 const NewPost = () => {
     class bankAccountClass {
@@ -22,34 +23,63 @@ const NewPost = () => {
         {
             post:
             {
-                title: '', 
+                title: '',
                 description: '',
-                date: '', 
-                grade: 0, 
+                date: '',
+                grade: 0,
                 isDonation: false,
                 state: null,
+                state_user: null,
                 number_banned: null,
-                user: parseInt(localStorage.getItem("user"))
-                },
-                bankAccounts: []
-            }))
+                user: parseInt(localStorage.getItem("user")),
+                images:[]
+            },
+            bankAccounts: []
+        }))
+
+    const [newImage, setNewImage] = useState(() => (
+        {
+            name: '',
+            data: ''
+        }
+
+    ));
 
     const handleSubmit = async (event) => {
         event.preventDefault()
-        // console.log('estado', state)
-        var x = await axios.post('http://localhost:8000/post/', post_req)//, fetch)
+        // var x = await axios.post('http://localhost:8000/post/', post_req)//, fetch)
+        var x = await axios.post('https://backdoggiehommie.herokuapp.com/post/', post_req)//, fetch)
+        
+        //var x = await axios.post(`${post_url}`, post_req)//, fetch)
 
-    
+
         if (x.status === 200) {
             window.alert("Post creado exitosamente")
             window.location.href = '/'
-          }else{
+        } else {
             window.alert("Error. Verifica los datos")
-          }
+        }
         console.log('data', x)
     }
 
     const [receiveDonations, toggleDonations] = useState(() => (false))
+
+    const onFileChange = event => {
+        const preview = event.target.files[0]
+        const reader = new FileReader();
+        const filename = preview.name; 
+        reader.readAsDataURL(preview);
+        reader.onloadend = () => {
+            const data = reader.result.toString().split(',')[1];
+            console.log("data: "+ data)
+            setPost({ 
+                ...post_req, post: { 
+                    ...post_req.post, 
+                    images:  [...post_req.post.images, {name:filename, data: data}] 
+                } 
+            });
+        };     
+    };
 
     return (
         <>
@@ -81,20 +111,32 @@ const NewPost = () => {
                                         id="post-descripcion"
                                         rows="4"
                                         aria-describedby="dni_help"
-                                        placeholder="Añade tu historia aqui"
+                                        placeholder="Añade tu historia aquí"
                                         name="post-descripcion"
                                         onChange={(e) => setPost({ ...post_req, post: { ...post_req.post, description: e.target.value } })}
                                     />
+                                    <ul className="list-group">
+                                     {post_req.post.images!==null || post_req.post.images!=="" ? (
+                                                                                    
+                                        (post_req.post.images.map(image => (
+                                            <li className='list-group'  key={image.name}>{image.name}</li>
+                                        )))
+                                       
+                                        ) : (
+                                            <p>kk</p>
+                                        )
+                                    }
+                                     </ul>
 
-                                    <label form="post-foto" className="form-label mb-1">Añade una foto</label>
+                                    <label form="file" className="form-label mb-1">Añade una foto</label>
                                     <input
                                         type="file"
-                                        accept='image/*'
+                                        //accept='image/*'
                                         className="form-control mb-3"
                                         id="post-foto"
                                         aria-describedby="dni_help"
                                         name="post-foto"
-                                    // onChange={(e) => setstate({ ...state, username: e.target.value })}
+                                        onChange={(e) => onFileChange(e)}
                                     />
                                     <div className="form-check">
                                         <input
@@ -103,13 +145,13 @@ const NewPost = () => {
                                             value=""
                                             id="flexCheckDefault"
                                             // checked={receiveDonations}
-                                            onClick = {() => toggleDonations(!receiveDonations) && console.log(receiveDonations)}
+                                            onClick={() => toggleDonations(!receiveDonations) && console.log(receiveDonations)}
                                             onChange={(e) => setPost({ ...post_req, post: { ...post_req.post, isDonation: e.target.checked } })}
                                         />
 
 
                                         <label className="form-check-label" form="flexCheckDefault">
-                                            Desea recibir donaciones
+                                            ¿Desea recibir donaciones?
                                         </label>
                                     </div></div>
                                 <div style={{ padding: "2%" }}>
